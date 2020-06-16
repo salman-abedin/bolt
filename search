@@ -1,52 +1,9 @@
 #!/usr/bin/env sh
 
+[ "$SEARCH_LIST" ] || export SEARCH_LIST=/tmp/search_list
+
 awk -F / '{print $NF}' "$SEARCH_LIST" |
-   $DMENU -p Open |
+   rofi -dmenu -i -p Open |
    xargs -I% grep /%$ "$SEARCH_LIST" |
    xargs launch
 
-# maxDepth=2
-# list=$(grep -v "^#" ~/.config/shortcutrc)
-
-# find -L $list -maxdepth $maxDepth \
-#     | awk -F / '{print $NF}' \
-#     | $DMENU -p Open \
-#     | xargs -I% find -L $list -maxdepth $maxDepth -name "%" -exec launch {} +
-
-# find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth $d \
-#     | rev \
-#     | cut -d'/' -f1 \
-#     | rev \
-#     | $DMENU -p Open \
-#     | xargs -I% find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth $d -name "%" -exec open {} +
-
-# find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth $d \
-#     | rev \
-#     | cut -d'/' -f1 \
-#     | rev \
-#     | $DMENU -p Open \
-#     | xargs -I% find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth $d -name "%" \
-#     | xargs open
-
-# choice=$(find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth 3 \
-#     | rev \
-#     | cut -d'/' -f1 \
-#     | rev \
-#     | $DMENU -p Open )
-# find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth 3 -name "$choice" | xargs open
-
-# | sed 's/\/home\/salman\///g' \
-
-# find -L $(grep -v "^#" ~/.config/shortcutrc) -maxdepth 3 | $DMENU -p Open | xargs open
-
-# locate -L $(grep -v "^#" ~/.config/shortcutrc) | $DMENU -p Open | xargs /home/salman/.local/bin/open
-
-# find ~/.local/share/dotFiles | $DMENU -p Open | xargs /home/salman/.local/bin/open
-
-# find `grep -v "^#" ~/.config/shortcutrc` -maxdepth 3 | $DMENU -p Open | xargs xdg-open
-
-# find ~ -maxdepth 4 | rofi -dmenu -i -p Open | xargs xdg-open
-# find $PATHS -maxdepth 3 | rofi -dmenu -i | xargs xdg-open
-# find ~ -maxdepth 5 | dmenu -i | xargs xdg-open
-# locate ~ | rofi -dmenu -i | xargs xdg-open
-# find ~/.xinitrc ~/.bash_profile ~/packages.sh ~/mods.sh ~/sarbs.sh ~/.config  ~/.local/bin ~/.local/share/application ~/downloads ~/st ~/workspace \

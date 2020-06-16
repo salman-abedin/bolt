@@ -1,31 +1,31 @@
 #!/usr/bin/env sh
 
-# whitelist="\
-# /home/$USER/Downloads \
-# $GIT/own \
-# /disk/Career/FE_Exam/practice \
-# /disk/Media \
-# /disk/Phone/Notes \
+[ "$SEARCH_LIST" ] || export SEARCH_LIST=/tmp/search_list
+
+path=$(readlink -f "$0")
+dir="${path%/*}"
+
+# blacklist="node_modules\
+# |/package.json\
+# |/\.git\
+# |/\.gitignore\
+# |LICENSE\
+# |README.md\
+# |\.icons\
+# |\.themes\
+# |wallpapers/\
+# |fonts/\
+# |Downloads/\
+# |Media/\
+# |Linux/\
+# |dwm/\
+# |sent/\
 # "
 
-blacklist="node_modules\
-|/package.json\
-|/\.git\
-|/\.gitignore\
-|LICENSE\
-|README.md\
-|\.icons\
-|\.themes\
-|wallpapers/\
-|fonts/\
-|Downloads/\
-|Media/\
-|Linux/\
-|dwm/\
-|sent/\
-"
+blacklist=$(grep -Ev "^#|^$" "$dir"/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
 
-find -L $1 -maxdepth $2 |
-   grep -Ev $blacklist \
+echo $blacklist
+
+find -L $(grep -v "^#" "$dir"/whitelist) -maxdepth 7 |
+   grep -Ev "$blacklist" \
       > "$SEARCH_LIST"
-

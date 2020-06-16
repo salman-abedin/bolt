@@ -3,8 +3,8 @@
 path=$(readlink -f "$0")
 dir="${path%/*}"
 
-inotifywait -m -r -e create,delete,move --format "%e" $(cat "$dir"/whitelist) |
+inotifywait -m -r -e create,delete,move $(grep -v "^#" "$dir"/whitelist) |
    while read -r event; do
-      "$dir"/generate-list
+      generate-list
    done
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+# whitelist="\
+# /home/$USER/Downloads \
+# $GIT/own \
+# /disk/Career/FE_Exam/practice \
+# /disk/Media \
+# /disk/Phone/Notes \
+# "
+
+blacklist="node_modules\
+|/package.json\
+|/\.git\
+|/\.gitignore\
+|LICENSE\
+|README.md\
+|\.icons\
+|\.themes\
+|wallpapers/\
+|fonts/\
+|Downloads/\
+|Media/\
+|Linux/\
+|dwm/\
+|sent/\
+"
+
+find -L $1 -maxdepth $2 |
+   grep -Ev $blacklist \
+      > "$SEARCH_LIST"
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+path=$(readlink -f "$0")
+dir="${path%/*}"
+
+inotifywait -m -r -e create,delete,move --format "%e" $(cat "$dir"/whitelist) |
+   while read -r event; do
+      "$dir"/generate-list
+   done
+

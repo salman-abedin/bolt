@@ -10,4 +10,12 @@ case $(file --mime-type "$1" -bL) in
       "$TERMINAL" -e "$EDITOR" "$1"
       ;;
 
+   video/*)
+      pgrep mpv || mpv "$1"
+      ;;
+
+   application/pdf | application/postscript)
+      zathura "$1"
+      ;;
+
 esac

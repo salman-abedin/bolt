@@ -6,7 +6,7 @@ dir="${path%/*}"
 
 whitelist=$(grep -v "^#" "$dir"/whitelist)
 blacklist=$(grep -Ev "^#|^$" "$dir"/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-maxDepth=7
+maxDepth=5
 
 find -L $whitelist -maxdepth $maxDepth |
    grep -Ev "$blacklist" \

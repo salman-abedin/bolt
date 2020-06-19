@@ -16,7 +16,7 @@
 
 - **Rofi**
 
-- **Inotify-tools**
+- **Inotifywait**
 
 ## Usage
 

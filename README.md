@@ -14,9 +14,9 @@
 
 ## Dependencies
 
-- Rofi
+###### Rofi
 
-- Inotify-tools
+###### Inotify-tools
 
 ## Usage
 

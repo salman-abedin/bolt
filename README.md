@@ -4,7 +4,7 @@
 
 ## How it works
 
-- **generate-list** gets all of your preferred file paths at startup from your whitelist config filtering out the blacklist matches
+- **generate-list** gets all of your preferred file paths at startup from your **whitelist** config filtering out the **blacklist** matches
 
 - When invoked, **search** shows you a dmenu prompt to pick a file/folder
 

@@ -4,11 +4,11 @@
 
 ## How it works
 
-- **generate-list** script gets all of your preferred file paths at startup from your whitelist config and it filters out the blacklist matches
+- **generate-list** gets all of your preferred file paths at startup from your whitelist config and it filters out the blacklist matches
 
-- **search** script shows you a dmenu prompt to pick a file
+- **search** shows you a dmenu prompt to pick a file
 
-- **launch** script launches the file according to it's type
+- **launch** opens the chosen file according to it's type
 
 - **watch-list** monitors changes in your whitelist directories and updates your search list accordingly
 
@@ -19,6 +19,8 @@
 - Inotify-tools
 
 ## Usage
+
+- These are shellscripts, do the typical drill
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples]()
 

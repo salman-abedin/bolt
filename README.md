@@ -24,7 +24,7 @@
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
-- launch the **bolt-generate** & **watch-list** scripts at startup
+- launch the **bolt-generate** & **bolt-watch** scripts at startup
 
 - Bind a key combination with the command **bolt-search**
 

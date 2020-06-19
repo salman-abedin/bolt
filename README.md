@@ -20,6 +20,8 @@
 
 ## Usage
 
+- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples]()
+
 - launch the **generate-list** & **watch-list** scripts at startup
 
 - Bind a key combination with the command **search**

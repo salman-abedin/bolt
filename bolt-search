@@ -5,4 +5,4 @@
 awk -F / '{print $NF}' "$SEARCH_LIST" |
     rofi -sort true -sorting-method fzf -dmenu -i -p Open |
     xargs -I% grep /%$ "$SEARCH_LIST" |
-    xargs launch
+    xargs bolt-launch

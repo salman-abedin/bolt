@@ -4,13 +4,13 @@
 
 ## How it works
 
-- **generate-list** gets all of your preferred file paths at startup from your **whitelist** config filtering out the **blacklist** matches
+- **bolt-generate** gets all of your preferred file paths at startup from your **whitelist** config filtering out the **blacklist** matches
 
-- When invoked, **search** shows you a dmenu prompt to pick a file/folder
+- When invoked, **bolt-search** shows you a dmenu prompt to pick a file/folder
 
-- **launch** opens the chosen file according to it's type
+- **bolt-launch** opens the chosen file according to it's type
 
-- **watch-list** monitors changes in your whitelist directories and updates your search list accordingly
+- **bolt-watch** monitors changes in your whitelist directories and updates your search list accordingly
 
 ## Dependencies
 
@@ -24,11 +24,11 @@
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
-- launch the **generate-list** & **watch-list** scripts at startup
+- launch the **bolt-generate** & **watch-list** scripts at startup
 
-- Bind a key combination with the command **search**
+- Bind a key combination with the command **bolt-search**
 
-- Modify the **launch** script according to your whim
+- Modify the **bolt-launch** script according to your whim
 
 ## FAQ
 

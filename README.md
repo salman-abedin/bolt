@@ -20,7 +20,7 @@
 
 ## Usage
 
-- These are shellscripts, do the typical drill
+- These are shellscripts, so do the typical drill (chmod, move to path)
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples]()
 

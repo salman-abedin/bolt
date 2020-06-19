@@ -3,7 +3,6 @@
 [ "$SEARCH_LIST" ] || export SEARCH_LIST=/tmp/search_list
 
 awk -F / '{print $NF}' "$SEARCH_LIST" |
-   rofi -dmenu -i -p Open |
-   xargs -I% grep /%$ "$SEARCH_LIST" |
-   xargs launch
-
+    rofi -dmenu -i -p Open |
+    xargs -I% grep /%$ "$SEARCH_LIST" |
+    xargs launch

@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
 
 [ "$SEARCH_LIST" ] || export SEARCH_LIST=/tmp/search_list
-path=$(readlink -f "$0")
-dir="${path%/*}"
 
-whitelist=$(grep -v "^#" "$dir"/whitelist)
-blacklist=$(grep -Ev "^#|^$" "$dir"/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
+whitelist=$(grep -v "^#" ~/.config/bolt/whitelist)
+blacklist=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
 maxDepth=5
 
 find -L $whitelist -maxdepth $maxDepth |
-   grep -Ev "$blacklist" \
-      > "$SEARCH_LIST"
+    grep -Ev "$blacklist" \
+        > "$SEARCH_LIST"

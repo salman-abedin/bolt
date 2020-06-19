@@ -2,7 +2,7 @@
 
 # Bolt: Lighting fast file/folder launcher for Unix
 
-### How it works
+## How it works
 
 - **generate-list** script gets all of your preferred file paths at startup from your whitelist config and it filters out the blacklist matches
 
@@ -12,6 +12,20 @@
 
 - **watch-list** monitors changes in your whitelist directories and updates your search list accordingly
 
-### Documentation
+## Dependencies
+
+- Rofi
+
+- Inotify-tools
+
+## Usage
+
+- launch the **generate-list** & **watch-list** scripts at startup
+
+- Bind a key combination with the command **search**
+
+- Modify the **launch** script according to your whim
+
+## Documentation
 
 Coming soon! lol.

@@ -26,6 +26,3 @@
 
 - Modify the **launch** script according to your whim
 
-## Documentation
-
-Coming soon! lol.

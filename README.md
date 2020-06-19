@@ -4,9 +4,9 @@
 
 ## How it works
 
-- **generate-list** gets all of your preferred file paths at startup from your whitelist config and it filters out the blacklist matches
+- **generate-list** gets all of your preferred file paths at startup from your whitelist config filtering out the blacklist matches
 
-- **search** shows you a dmenu prompt to pick a file
+- When invoked, **search** shows you a dmenu prompt to pick a file/folder
 
 - **launch** opens the chosen file according to it's type
 
@@ -22,7 +22,7 @@
 
 - These are shellscripts, so do the typical drill (chmod, move to path)
 
-- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples]()
+- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
 - launch the **generate-list** & **watch-list** scripts at startup
 

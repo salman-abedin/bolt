@@ -1,5 +1,6 @@
 <!--- ![](demo/preview.gif) -->
-![](https://media.giphy.com/media/VgOJlJ0XNl38zHIAM3/giphy.gif)
+<!--- ![](https://media.giphy.com/media/VgOJlJ0XNl38zHIAM3/giphy.gif) -->
+[Imgur](https://i.imgur.com/KopSfLf.gifv)
 
 # Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 

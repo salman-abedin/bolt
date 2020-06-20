@@ -1,6 +1,6 @@
 ![](demo/preview.gif)
 
-# Bolt: Lighting fast file/folder launcher for Unix
+# Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 
 ## How it works
 

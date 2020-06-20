@@ -10,16 +10,16 @@
 
 - **Inotifywait**
 
+## Prerequisite
+
+The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
+I refuse to write a config file for this as I have the **sed11q** syndrome so happy scripting. XD
+
 ## Installation
 
 ```sh
 git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make install
 ```
-
-## Prerequisite
-
-The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
-I refuse to write a config file for this as I have the **sed11q** syndrome so happy scripting. XD
 
 ## Usage
 

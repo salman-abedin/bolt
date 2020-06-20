@@ -59,6 +59,9 @@ In other words, you'll have to spend a few more key presses to find what you are
 [Magpie](https://github.com/salman-abedin/magpie)
 : The dotfiles
 
+[Alfred](https://github.com/salman-abedin/alfred)
+: The scripts
+
 ## Contact
 
 SalmanAbedin@disroot.org

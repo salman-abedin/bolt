@@ -40,14 +40,6 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 sudo make uninstall
 ```
 
-## FAQ
-
-### Can I use Dmenu instead of Rofi?
-
-You can, but you will be missing out on Rofi's ability to search using fzf algorithm.
-In other words, you'll have to spend a few more key presses to find what you are looking for.
-
-
 ## Other Projects
 
 [Crystal](https://github.com/salman-abedin/crystal)

@@ -1,5 +1,5 @@
 <!--- ![](demo/preview.gif) -->
-![](https://cloud.disroot.org/s/BNG9S99nszx5AXi/preview)
+![](https://media.giphy.com/media/VgOJlJ0XNl38zHIAM3/giphy.gif)
 
 # Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 

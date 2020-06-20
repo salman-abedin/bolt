@@ -21,9 +21,7 @@
 ## Installation
 
 ```sh
-git clone https://github.com/salman-abedin/bolt.git
-cd bolt
-sudo make install
+git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make install
 ```
 
 ## Usage

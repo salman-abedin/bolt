@@ -5,6 +5,7 @@ search_list=/tmp/search_list
 while :; do
     case $1 in
         --launch)
+            # Modify this section according to your preference
             case $(file --mime-type "$2" -bL) in
                 inode/directory)
                     $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$2"

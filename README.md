@@ -26,9 +26,9 @@ The only caveat of this program is that you have to modify the source code to la
 
 - run `bolt --generate --watch` at startup
 
-- Bind a key combination with the command **bolt --search**
+- Bind a key combination with the command `bolt --search`
 
-- Press Enter and Baam!!!
+- Now search for what you wanna launch, Press Enter and Baam!
 
 ## Uninstallation
 

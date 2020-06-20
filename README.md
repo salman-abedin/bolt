@@ -35,6 +35,12 @@ sudo make install
 
 - Modify the **bolt-launch** script according to your whim & re-install afterwards
 
+## Uninstallation
+
+```sh
+sudo make uninstall
+```
+
 ## FAQ
 
 ### Can I use Dmenu instead of Rofi?

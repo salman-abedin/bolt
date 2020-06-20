@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+
 search_list=/tmp/search_list
 while :; do
     case $1 in

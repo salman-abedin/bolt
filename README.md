@@ -25,6 +25,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 ```
 
 ## Usage
+
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
 - launch the **bolt-generate** & **bolt-watch** scripts at startup

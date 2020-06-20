@@ -18,9 +18,14 @@
 
 - **Inotifywait**
 
-## Usage
+## Installation
 
-- These are shellscripts, so do the typical drill (chmod, move to path)
+```sh
+git clone git@github.com:salman-abedin/devour.git
+sudo make install
+```
+
+## Usage
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
@@ -28,7 +33,7 @@
 
 - Bind a key combination with the command **bolt-search**
 
-- Modify the **bolt-launch** script according to your whim
+- Modify the **bolt-launch** script according to your whim & re-install afterwards
 
 ## FAQ
 

@@ -21,7 +21,7 @@
 ## Installation
 
 ```sh
-git clone git@github.com:salman-abedin/bolt.git
+git clone https://github.com/salman-abedin/bolt.git
 sudo make install
 ```
 

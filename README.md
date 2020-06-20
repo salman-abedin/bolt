@@ -18,11 +18,13 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 ## Prerequisite
 
-The only caveat of this program is that you have to modify the source code to launch using your preferred applications. I'll make things easier in the future, but until then, happy scripting. XD
+The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
+I refuse to write a config file for this as I have the **sed11q** syndrome so happy scripting. XD
 
 ## Usage
 
-- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
+- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. 
+    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
 - run `bolt --generate --watch` at startup
 

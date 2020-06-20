@@ -14,6 +14,8 @@
 
 ## Dependencies
 
+- grep, sed, find, awk, xargs, and file
+
 - **Rofi**
 
 - **Inotifywait**

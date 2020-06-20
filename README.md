@@ -2,16 +2,6 @@
 
 # Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 
-## How it works
-
-- **bolt-generate** gets all of your preferred file paths at startup from your **whitelist** config filtering out the **blacklist** matches
-
-- When invoked, **bolt-search** shows you a dmenu prompt to pick a file/folder
-
-- **bolt-launch** opens the chosen file according to it's type
-
-- **bolt-watch** monitors changes in your whitelist directories and updates your search list accordingly
-
 ## Dependencies
 
 - grep, sed, find, awk, xargs, and file
@@ -26,15 +16,19 @@
 git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make install
 ```
 
+## Prerequisite
+
+The only caveat of this program is that you have to modify the source code to launch using your preferred applications. I'll make things easier in the future, but until then, happy scripting. XD
+
 ## Usage
 
 - Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
-- launch the **bolt-generate** & **bolt-watch** scripts at startup
+- run `bolt --generate --watch` at startup
 
-- Bind a key combination with the command **bolt-search**
+- Bind a key combination with the command **bolt --search**
 
-- Modify the **bolt-launch** script according to your whim & re-install afterwards
+- Press Enter and Baam!!!
 
 ## Uninstallation
 

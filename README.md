@@ -12,6 +12,8 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 - A monitoring script to monitor changes in your whitelist directories
 
+- A custom launch script that offers a hassle free setup unlike xdg-open
+
 ## Dependencies
 
 -  grep, sed, find, awk, xargs, and file

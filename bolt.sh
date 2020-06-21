@@ -26,7 +26,7 @@ while :; do
             awk -F / '{print $NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open |
                 xargs -I% grep /%$ "$SEARCHLIST" |
-                xargs bolt --launch
+                xargs "$0" --launch
             ;;
         --generate)
             WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
@@ -39,10 +39,12 @@ while :; do
             WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
             inotifywait -m -r -e create,delete,move $WHITELIST |
                 while read -r read; do
-                    bolt --generate
+                    "$0" --generate
                 done &
             ;;
         *) break ;;
     esac
     shift
 done
+
+exit 0

@@ -52,6 +52,9 @@ sudo make uninstall
 [Alfred](https://github.com/salman-abedin/alfred)
 : The scripts
 
+[Devour](https://github.com/salman-abedin/devour)
+: Terminal swallowing
+
 ## Contact
 
 SalmanAbedin@disroot.org

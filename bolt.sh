@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 search_list=/tmp/search_list
 while :; do
     case $1 in
@@ -10,7 +9,7 @@ while :; do
                 inode/directory)
                     $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$2"
                     ;;
-                text/* | inode/x-empty | application/json | application/octet-stream)
+                text/*|inode/x-empty|application/json|application/octet-stream)
                     "$TERMINAL" -e "$EDITOR" "$2"
                     ;;
                 video/*)
@@ -38,7 +37,7 @@ while :; do
         --watch)
             whitelist=$(grep -v "^#" ~/.config/bolt/whitelist)
             inotifywait -m -r -e create,delete,move $whitelist |
-                while read -r :; do
+                while read -r read; do
                     bolt --generate
                 done &
             ;;

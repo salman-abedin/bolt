@@ -9,7 +9,9 @@ while :; do
             shift
             # Modify this section according to your preference
             case $(file --mime-type "$*" -bL) in
+                # Figure out the mimetype of your file by running 'xdg-mime query filetype <Your File>'
                 inode/directory)
+                    # Launch using your favorite programs
                     $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)

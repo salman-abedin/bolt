@@ -12,10 +12,10 @@ while :; do
                 # Find out the mimetype of your file
                 inode/directory)
                     # Launch using your favorite programs
-                    explore "$*"
+                    $TERMINAL -e explore "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
-                    "$TERMINAL" -e "$EDITOR" "$*"
+                    $TERMINAL -e "$EDITOR" "$*"
                     ;;
                 video/*)
                     mpv "$*"

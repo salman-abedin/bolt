@@ -6,9 +6,9 @@
 
 -  grep, sed, find, awk, xargs, and file
 
--  **Rofi**
+-  [Rofi](https://github.com/davatorium/rofi)
 
--  **Inotifywait**
+-  [Inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
 ## Prerequisite
 

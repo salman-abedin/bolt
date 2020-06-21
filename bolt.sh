@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+max_depth=5
+
 search_list=/tmp/search_list
 while :; do
     case $1 in
@@ -29,8 +31,7 @@ while :; do
         --generate)
             whitelist=$(grep -v "^#" ~/.config/bolt/whitelist)
             blacklist=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            maxDepth=5
-            find -L $whitelist -maxdepth $maxDepth |
+            find -L $whitelist -maxdepth $max_depth |
                 grep -Ev "$blacklist" \
                     > "$search_list"
             ;;

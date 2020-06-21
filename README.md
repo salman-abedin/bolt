@@ -4,11 +4,11 @@
 
 ## Dependencies
 
-- grep, sed, find, awk, xargs, and file
+-  grep, sed, find, awk, xargs, and file
 
-- **Rofi**
+-  **Rofi**
 
-- **Inotifywait**
+-  **Inotifywait**
 
 ## Prerequisite
 
@@ -23,14 +23,14 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 ## Usage
 
-- Create a **whitelist** and a **blacklist** file in **~/.config/bolt**. 
-    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
+-  Create a **whitelist** and a **blacklist** file in **~/.config/bolt**.
+   Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
-- run `bolt --generate --watch` at startup
+-  run `bolt --generate --watch` at startup
 
-- Bind a key combination with the command `bolt --search`
+-  Bind a key combination with the command `bolt --search`
 
-- Now search for what you wanna launch, press Enter and baam!
+-  Now search for what you wanna launch, press Enter and baam!
 
 ## Uninstallation
 
@@ -42,7 +42,13 @@ sudo make uninstall
 
 ### Why not use xdg-open
 
-You would much rather modify two files in two different location with 5 lines than add one line in my script?
+I hate xdg-open.
+
+    - First, it will only work on linux
+
+    - Second, You have to modify two files in two different location with no less than 5 lines 
+
+I would much rather use a one liner like in my script.
 
 ## Other Projects
 
@@ -64,4 +70,3 @@ You would much rather modify two files in two different location with 5 lines th
 ## Contact
 
 SalmanAbedin@disroot.org
-

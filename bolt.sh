@@ -6,19 +6,20 @@ SEARCHLIST=/tmp/search_list
 while :; do
     case $1 in
         --launch)
+            shift
             # Modify this section according to your preference
-            case $(file --mime-type "$2" -bL) in
+            case $(file --mime-type "$*" -bL) in
                 inode/directory)
-                    $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$2"
+                    $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
-                    "$TERMINAL" -e "$EDITOR" "$2"
+                    "$TERMINAL" -e "$EDITOR" "$*"
                     ;;
                 video/*)
-                    mpv "$2"
+                    mpv "$*"
                     ;;
                 application/pdf | application/postscript)
-                    zathura "$2"
+                    zathura "$*"
                     ;;
             esac
             ;;

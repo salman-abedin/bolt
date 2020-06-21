@@ -46,7 +46,7 @@ I hate xdg-open.
 
 - First, it will only work on linux
 
-- Second, You have to modify two files in two different location with no less than 5 lines 
+- Second, You have to modify two files in two different locations with no less than 5 lines 
 
 I would much rather have you use a one liner like in my script and keep the overall script much more flexible.
 

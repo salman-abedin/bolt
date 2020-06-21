@@ -38,6 +38,12 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 sudo make uninstall
 ```
 
+## FAQ
+
+### Why not use xdg-open
+
+You would much rather modify two files in two different location with 5 lines than add one line in my script?
+
 ## Other Projects
 
 [Crystal](https://github.com/salman-abedin/crystal)

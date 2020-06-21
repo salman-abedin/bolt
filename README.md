@@ -2,6 +2,16 @@
 
 # Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 
+Bolt prompts you to pick a file or folder from your favorite directories and launches it
+
+# Features
+
+- A whitelist for generating a personalized search
+
+- A blacklist in order to filter out irrelevant matches
+
+- A monitoring script to monitor changes in your whitelist directories
+
 ## Dependencies
 
 -  grep, sed, find, awk, xargs, and file

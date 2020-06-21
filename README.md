@@ -40,15 +40,15 @@ sudo make uninstall
 
 ## FAQ
 
-### Why not use xdg-open
+### Why not use xdg-open?
 
 I hate xdg-open.
 
-    - First, it will only work on linux
+- First, it will only work on linux
 
-    - Second, You have to modify two files in two different location with no less than 5 lines 
+- Second, You have to modify two files in two different location with no less than 5 lines 
 
-I would much rather use a one liner like in my script.
+I would much rather have you use a one liner like in my script.
 
 ## Other Projects
 

@@ -3,7 +3,6 @@
 MAXDEPTH=5
 SEARCHLIST=/tmp/search_list
 
-
 while :; do
     case $1 in
         --launch)

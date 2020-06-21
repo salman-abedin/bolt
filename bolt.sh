@@ -11,7 +11,6 @@ while :; do
             case $(file --mime-type "$*" -bL) in
                 # Find out the mimetype of your file
                 inode/directory)
-                    notify-send "yo"
                     # Launch using your favorite programs
                     $TERMINAL -e explore "$*"
                     ;;
@@ -30,8 +29,8 @@ while :; do
             awk -F / '{print $NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open |
                 xargs -I% grep /%$ "$SEARCHLIST" |
-                xargs notify-send
-                # xargs "$0" --launch
+                head -1 |
+                xargs "$0" --launch
             ;;
         --generate)
             WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)

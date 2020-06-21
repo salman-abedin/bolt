@@ -42,7 +42,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 -  Bind a key combination with the command `bolt --search`
 
--  Now search for what you wanna launch, press Enter and baam!
+-  Now search for what you want to launch, press Enter and baam!
 
 ## Uninstallation
 
@@ -58,7 +58,7 @@ I hate xdg-open. Because...
 
 -  First, it will only work on linux.
 
--  Second, You have to modify two files in two different locations with no less than 5 lines.
+-  Second, You have to modify two files in two different locations with no less than 5 lines with root level shellscripting.
    I would much rather have you use a one liner like in my script and keep the overall script much more flexible.
 
 ## Other Projects

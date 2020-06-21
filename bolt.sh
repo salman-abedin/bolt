@@ -2,7 +2,6 @@
 
 MAXDEPTH=5
 SEARCHLIST=/tmp/search_list
-
 while :; do
     case $1 in
         --launch)
@@ -50,5 +49,4 @@ while :; do
     esac
     shift
 done
-
 exit 0

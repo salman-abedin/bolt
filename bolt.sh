@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-max_depth=5
+MAXDEPTH=5
+SEARCHLIST=/tmp/search_list
 
-search_list=/tmp/search_list
 while :; do
     case $1 in
         --launch)
@@ -23,21 +23,21 @@ while :; do
             esac
             ;;
         --search)
-            awk -F / '{print $NF}' "$search_list" |
+            awk -F / '{print $NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open |
-                xargs -I% grep /%$ "$search_list" |
+                xargs -I% grep /%$ "$SEARCHLIST" |
                 xargs bolt --launch
             ;;
         --generate)
-            whitelist=$(grep -v "^#" ~/.config/bolt/whitelist)
-            blacklist=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            find -L $whitelist -maxdepth $max_depth |
-                grep -Ev "$blacklist" \
-                    > "$search_list"
+            WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
+            BLACKLIST=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
+            find -L $WHITELIST -maxdepth $MAXDEPTH |
+                grep -Ev "$BLACKLIST" \
+                    > "$SEARCHLIST"
             ;;
         --watch)
-            whitelist=$(grep -v "^#" ~/.config/bolt/whitelist)
-            inotifywait -m -r -e create,delete,move $whitelist |
+            WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
+            inotifywait -m -r -e create,delete,move $WHITELIST |
                 while read -r read; do
                     bolt --generate
                 done &

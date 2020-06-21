@@ -12,7 +12,8 @@ while :; do
                 # Find out the mimetype of your file
                 inode/directory)
                     # Launch using your favorite programs
-                    $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$*"
+                    $TERMINAL -e explore "$*"
+                    # $TERMINAL -e lf -last-dir-path ~/.config/lf/last_path "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
                     "$TERMINAL" -e "$EDITOR" "$*"

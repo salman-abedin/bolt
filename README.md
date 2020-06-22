@@ -27,6 +27,8 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
 I refuse to write a config file for this as I have the **sed11q** syndrome so happy scripting. XD
 
+Don't forget **reinstall** after modifying the script.
+
 ## Installation
 
 ```sh

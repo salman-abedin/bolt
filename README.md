@@ -16,7 +16,7 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 ## Dependencies
 
--  grep, sed, find, awk, xargs, and file
+-  shift, grep, sed, find, awk, xargs, and file
 
 -  [Rofi](https://github.com/davatorium/rofi)
 

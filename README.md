@@ -6,9 +6,9 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 # Features
 
--  A whitelist for generating a personalized search
+-  A whitelist for generating a personalized search list
 
--  A blacklist in order to filter out irrelevant matches
+-  A blacklist for filtering out irrelevant matches
 
 -  A monitoring script to monitor changes in your whitelist directories
 

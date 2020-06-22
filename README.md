@@ -58,7 +58,7 @@ I hate xdg-open. Because...
 
 -  First, it will only work on linux.
 
--  Second, You have to modify two files in two different locations with no less than 5 lines with root level shellscripting.
+-  Second, You have to modify two files in two different locations with no less than 5 lines with root level shell scripting.
    I would much rather have you use a one liner like in my script and keep the overall script much more flexible.
 
 ## Other Projects

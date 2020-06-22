@@ -10,7 +10,7 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 -  A blacklist for filtering out irrelevant matches
 
--  A monitoring script to monitor changes in your whitelist directories
+-  A monitoring script to update the whitelist in real-time
 
 -  A custom launch script that offers a hassle free setup unlike xdg-open
 

@@ -16,7 +16,7 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 ## Dependencies
 
--  shift, grep, sed, find, awk, xargs, and file
+-  shift, grep, sed, find, awk, xargs, file
 
 -  [Rofi](https://github.com/davatorium/rofi)
 
@@ -25,7 +25,7 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 ## Prerequisite
 
 The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
-I refuse to write a config file for this as I have the **sed11q** syndrome so happy scripting. XD
+I refuse to write a config for this as I have the **sed11q** syndrome so happy scripting. XD
 
 Don't forget **reinstall** after modifying the script.
 
@@ -60,10 +60,10 @@ I hate xdg-open. Because...
 
 -  First, it will only work on linux.
 
--  Second, You have to modify two files in two different locations with no less than 5 lines with root level shell scripting.
+-  Second, You have to modify two files in two different locations writing no less than 5 lines with root level shell scripting.
    I would much rather have you use a one liner like in my script and keep the overall script much more flexible.
 
-## Other Projects
+## Repos you might be interested in
 
 [Crystal](https://github.com/salman-abedin/crystal)
 : The transparent setup

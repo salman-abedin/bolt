@@ -83,3 +83,4 @@ I hate xdg-open. Because...
 ## Contact
 
 SalmanAbedin@disroot.org
+

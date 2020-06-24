@@ -2,17 +2,17 @@
 
 # Bolt: Lighting fast file/folder launcher for the fastest workfow ever
 
-Bolt prompts you to pick a file or folder from your favorite directories and launches it
+Bolt prompts you to pick a file/folder from your favorite directories and launches it
 
 # Features
 
--  A whitelist for generating a personalized search list
+-  A whitelist to generate a personalized search list
 
--  A blacklist for filtering out irrelevant matches
+-  A blacklist to filter out irrelevant matches
 
 -  A monitoring script to update the whitelist in real-time
 
--  A custom launch script that offers a hassle free setup unlike xdg-open
+-  A custom launch script to define launch programs easily (unlike **xdg-open**)
 
 ## Dependencies
 
@@ -24,10 +24,7 @@ Bolt prompts you to pick a file or folder from your favorite directories and lau
 
 ## Prerequisite
 
-The only caveat of this program is that you have to modify the source code to launch using your preferred applications.
-I refuse to write a config for this as I have the **sed11q** syndrome so happy scripting. XD
-
-Don't forget **reinstall** after modifying the script.
+-  Modify the launch section of the source code according to your preference
 
 ## Installation
 
@@ -87,4 +84,3 @@ I hate xdg-open. Because...
 ## Contact
 
 SalmanAbedin@disroot.org
-

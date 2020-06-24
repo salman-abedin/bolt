@@ -59,10 +59,12 @@ sudo make uninstall
 
 I hate xdg-open. Because...
 
--  First, it will only work on linux.
+1. it will only work on linux
 
--  Second, You have to modify two files in two different locations writing no less than 5 lines with root level shell scripting.
+2. Second, You have to modify two files in two different locations writing no less than 5 lines with root level shell scripting.
    I would much rather have you use a one liner like in my script and keep the overall script much more flexible.
+
+---
 
 ## Repos you might be interested in
 

@@ -25,7 +25,7 @@ while :; do
             esac
             ;;
         --search)
-            awk -F / '{print $NF}' "$SEARCHLIST" |
+            awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open |
                 xargs -I% grep /%$ "$SEARCHLIST" |
                 head -1 |

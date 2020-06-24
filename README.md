@@ -52,6 +52,10 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 sudo make uninstall
 ```
 
+## Patches
+
+-  **24/06/20**:- Added two column prompt for more accurate searching
+
 ## FAQ
 
 ### Why not use xdg-open?

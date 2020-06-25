@@ -41,7 +41,7 @@ while :; do
         --watch)
             WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
             inotifywait -m -r -e create,delete,move $WHITELIST |
-                while read -r read; do
+                while read -r; do
                     "$0" --generate
                 done &
             ;;

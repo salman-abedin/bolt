@@ -8,7 +8,7 @@ while :; do
             shift
             # Modify this section according to your preference
             case $(file --mime-type "$*" -bL) in
-                # Find out the mimetype of your file
+                # Find out the mimetype of the file you wannna launch
                 inode/directory)
                     # Launch using your favorite programs
                     $TERMINAL -e explore "$*"

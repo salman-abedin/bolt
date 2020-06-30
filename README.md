@@ -1,6 +1,6 @@
 ![](preview/bolt.gif)
 
-# Bolt: Lighting fast file/folder launcher for the fastest workflow ever
+# Bolt: Lighting fast launcher for the fastest workflow ever
 
 Bolt prompts you to search for files, directories or Google keywords.
 

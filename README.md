@@ -77,9 +77,6 @@ I hate xdg-open. Because...
 [Crystal](https://github.com/salman-abedin/crystal)
 : The transparent setup
 
-[Uniblocks](https://github.com/salman-abedin/uniblocks)
-: The statusbar
-
 [Magpie](https://github.com/salman-abedin/magpie)
 : The dotfiles
 
@@ -88,6 +85,9 @@ I hate xdg-open. Because...
 
 [Devour](https://github.com/salman-abedin/devour)
 : Terminal swallowing
+
+[Uniblocks](https://github.com/salman-abedin/uniblocks)
+: The statusbar
 
 ## Contact
 

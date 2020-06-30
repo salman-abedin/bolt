@@ -2,5 +2,7 @@
 # ❗ Give absolute paths
 
 /home/salman/Downloads
-/home/git/own
-# /disk/Media
+
+/mnt/horcrux/git/own
+
+/mnt/horcrux/media

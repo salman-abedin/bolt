@@ -2,11 +2,15 @@
 
 node_modules
 package.json
+
 .git
 .gitignore
 LICENSE
 README.md
-.icons
-.themes
-.mame
+
+icons
+themes
+fonts
+
 .ssh
+.mame

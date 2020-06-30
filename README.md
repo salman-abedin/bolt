@@ -6,6 +6,8 @@ Bolt prompts you to pick a file/folder from your favorite directories and launch
 
 # Features
 
+-  It runs fast as it is written in shellscript
+
 -  A whitelist to generate a personalized search list
 
 -  A blacklist to filter out irrelevant matches

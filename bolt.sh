@@ -2,6 +2,18 @@
 
 MAXDEPTH=5
 SEARCHLIST=/tmp/search_list
+
+# Head alternative
+# Forked from https://github.com/dylanaraps
+thead() {
+    while read -r line; do
+        echo "$line"
+        i=$((i + 1))
+        [ "$i" = "$1" ] && return
+    done < /dev/stdin
+    [ -n "$line" ] && printf %s "$line"
+}
+
 while :; do
     case $1 in
         --launch)
@@ -28,7 +40,7 @@ while :; do
             awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open |
                 xargs -I% grep /%$ "$SEARCHLIST" |
-                head -1 |
+                thead 1 |
                 xargs "$0" --launch
             ;;
         --generate)

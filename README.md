@@ -12,11 +12,11 @@ Bolt prompts you to search for files, directories or Google keywords.
 
 -  A monitoring script to update the whitelist in real-time
 
--  A custom launch script to define launch programs easily (unlike **xdg-open**)
+-  A custom launch script to easily define launch programs (unlike **xdg-open**)
 
 -  Googling capability
 
--  As fast as it gets! (hint: shellscript)
+-  Runs as fast as it gets! (hint: shellscript)
 
 ## Dependencies
 

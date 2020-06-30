@@ -1,6 +1,6 @@
 ![](preview/bolt.gif)
 
-# Bolt: Lighting fast file/folder launcher for the fastest workfow ever
+# Bolt: Lighting fast file/folder launcher for the fastest workflow ever
 
 Bolt prompts you to pick a file/folder from your favorite directories and launches it
 

@@ -37,14 +37,14 @@ while :; do
             esac
             ;;
         --search)
-            query=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open)
-            [ "$query" ] || exit 1
-            result=$(grep "$query" "$SEARCHLIST" | thead 1)
-            if [ "$result" ]; then
-                "$0" --launch "$result"
+            [ "$QUERY" ] || exit 1
+            RESULT=$(grep "$QUERY" "$SEARCHLIST" | thead 1)
+            if [ "$RESULT" ]; then
+                "$0" --launch "$RESULT"
             else
-                "$BROWSER" google.com/search\?q="$query"
+                "$BROWSER" google.com/search\?q="$QUERY"
             fi
             ;;
         --generate)

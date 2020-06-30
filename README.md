@@ -14,6 +14,8 @@ Bolt prompts you to pick a file/folder from your favorite directories and launch
 
 -  A custom launch script to define launch programs easily (unlike **xdg-open**)
 
+-  Googling in case of no matches
+
 ## Dependencies
 
 -  shift, grep, sed, find, awk, xargs, file

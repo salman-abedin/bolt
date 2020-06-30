@@ -2,11 +2,9 @@
 
 # Bolt: Lighting fast file/folder launcher for the fastest workflow ever
 
-Bolt prompts you to pick a file/folder from your favorite directories and launches it
+Bolt prompts you to search for files, directories or Google keywords.
 
 # Features
-
--  It runs fast as it is written in shellscript
 
 -  A whitelist to generate a personalized search list
 
@@ -16,7 +14,9 @@ Bolt prompts you to pick a file/folder from your favorite directories and launch
 
 -  A custom launch script to define launch programs easily (unlike **xdg-open**)
 
--  Googling in case of no matches
+-  Googling capability
+
+-  As fast as it gets! (hint: shellscript)
 
 ## Dependencies
 

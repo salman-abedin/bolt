@@ -37,11 +37,15 @@ while :; do
             esac
             ;;
         --search)
-            awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                rofi -sort true -sorting-method fzf -dmenu -i -p Open |
-                xargs -I% grep /%$ "$SEARCHLIST" |
-                thead 1 |
-                xargs "$0" --launch
+            query=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+                rofi -sort true -sorting-method fzf -dmenu -i -p Open)
+            [ "$query" ] || exit 1
+            result=$(grep "$query" "$SEARCHLIST" | thead 1)
+            if [ "$result" ]; then
+                "$0" --launch "$result"
+            else
+                "$BROWSER" google.com/search\?q="$query"
+            fi
             ;;
         --generate)
             WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)

@@ -1,8 +1,8 @@
 ![](preview/bolt.gif)
 
-# Bolt: Lighting fast launcher for the fastest workflow ever
+# Bolt: Lighting fast launcher for the fastest Unix workflow ever
 
-Bolt prompts you to search for files, directories or Google keywords.
+Bolt prompts you for keywords to your local files, directories or Google search.
 
 # Features
 
@@ -41,11 +41,11 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 -  Create a **whitelist** and a **blacklist** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
--  run `bolt --generate --watch` at startup
+-  run `bolt --generate --watch` at startup to generate and monitor search list respectively
 
--  Bind a key combination with the command `bolt --search`
+-  Bind a key combination with the command `bolt --search` to launch the prompt
 
--  Now search for what you want to launch, press Enter and baam!
+-  Type the keyword, press enter and baam!
 
 ## Uninstallation
 
@@ -56,6 +56,8 @@ sudo make uninstall
 ## Patches
 
 -  **24/06/20**:- Added two column prompt for more accurate searching
+
+-  **30/06/20**:- Added googling support
 
 ## FAQ
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-MAXDEPTH=5
+MAXDEPTH=6
 SEARCHLIST=/tmp/search_list
 
 # Head alternative

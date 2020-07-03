@@ -2,7 +2,7 @@
 
 # Bolt: Lighting fast launcher for the fastest Unix workflow ever
 
-Bolt prompts you for keywords to your local files, directories or Google search.
+Bolt prompts you for keywords to your local files, directories or Google search and launches them respectively.
 
 # Features
 
@@ -38,7 +38,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 ## Usage
 
--  Create a **pahts** and a **filters** file in **~/.config/bolt**.
+-  Create a **paths** and a **filters** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
 -  run `bolt --generate --watch` at startup to generate and monitor search list respectively
@@ -87,7 +87,7 @@ I hate xdg-open. Because...
 : Terminal swallowing
 
 [Uniblocks](https://github.com/salman-abedin/uniblocks)
-: The statusbar
+: The status bar
 
 ## Contact
 

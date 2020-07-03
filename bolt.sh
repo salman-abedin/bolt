@@ -48,15 +48,15 @@ while :; do
             fi
             ;;
         --generate)
-            WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
+            PATHLIST=$(grep -v "^#" ~/.config/bolt/pathlist)
             BLACKLIST=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            find -L $WHITELIST -maxdepth $MAXDEPTH |
+            find -L $PATHLIST -maxdepth $MAXDEPTH |
                 grep -Ev "$BLACKLIST" \
                     > "$SEARCHLIST"
             ;;
         --watch)
-            WHITELIST=$(grep -v "^#" ~/.config/bolt/whitelist)
-            inotifywait -m -r -e create,delete,move $WHITELIST |
+            PATHLIST=$(grep -v "^#" ~/.config/bolt/pathlist)
+            inotifywait -m -r -e create,delete,move $PATHLIST |
                 while read -r line; do
                     "$0" --generate
                 done &

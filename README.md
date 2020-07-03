@@ -41,7 +41,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 -  Create a **paths** and a **filters** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
--  run `bolt --generate --watch` at startup to generate and monitor search list respectively
+-  run `bolt --generate --watch` at startup to generate and monitor the search list respectively
 
 -  Bind a key combination with the command `bolt --search` to launch the prompt
 

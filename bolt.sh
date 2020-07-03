@@ -3,7 +3,7 @@
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist
 
-# Head alternative
+# "head" alternative
 # Forked from https://github.com/dylanaraps/pure-bash-bible#get-the-first-n-lines-of-a-file
 thead() {
     while read -r line; do

@@ -6,11 +6,11 @@ Bolt prompts you for keywords to your local files, directories or Google search.
 
 # Features
 
--  A whitelist to generate a personalized search list
+-  A **paths** file to generate a personalized search list
 
--  A blacklist to filter out irrelevant matches
+-  A **filters** file to filter out irrelevant matches
 
--  A monitoring script to update the whitelist in real-time
+-  A monitoring script to update the search list in real-time
 
 -  A custom launch script to easily define launch programs (unlike **xdg-open**)
 
@@ -38,7 +38,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 ## Usage
 
--  Create a **whitelist** and a **blacklist** file in **~/.config/bolt**.
+-  Create a **pahts** and a **filters** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
 -  run `bolt --generate --watch` at startup to generate and monitor search list respectively

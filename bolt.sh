@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 MAXDEPTH=6
-SEARCHLIST=/tmp/search_list
+SEARCHLIST=/tmp/searchlist
 
 # Head alternative
 # Forked from https://github.com/dylanaraps/pure-bash-bible#get-the-first-n-lines-of-a-file
@@ -48,15 +48,15 @@ while :; do
             fi
             ;;
         --generate)
-            PATHLIST=$(grep -v "^#" ~/.config/bolt/pathlist)
-            BLACKLIST=$(grep -Ev "^#|^$" ~/.config/bolt/blacklist | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            find -L $PATHLIST -maxdepth $MAXDEPTH |
-                grep -Ev "$BLACKLIST" \
+            PATHS=$(grep -v "^#" ~/.config/bolt/paths)
+            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
+            find -L $PATHS -maxdepth $MAXDEPTH |
+                grep -Ev "$FILTERS" \
                     > "$SEARCHLIST"
             ;;
         --watch)
-            PATHLIST=$(grep -v "^#" ~/.config/bolt/pathlist)
-            inotifywait -m -r -e create,delete,move $PATHLIST |
+            PATHS=$(grep -v "^#" ~/.config/bolt/paths)
+            inotifywait -m -r -e create,delete,move $PATHS |
                 while read -r line; do
                     "$0" --generate
                 done &

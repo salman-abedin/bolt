@@ -26,6 +26,8 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  [Inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
+-  [Tmux](https://github.com/tmux/tmux)
+
 -  **tmux && fzf** (optional)
 
 ## Prerequisite

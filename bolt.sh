@@ -27,13 +27,22 @@ while :; do
     case $1 in
         --launch)
             shift
+            #========================================================
             # Modify this section according to your preference
+            #========================================================
             case $(file --mime-type "$*" -bL) in
+                #====================================================
                 # Find out the mimetype of the file you wannna launch
+                #====================================================
                 video/*)
+                    #================================================
                     # Launch using your favorite programs
+                    #================================================
                     mpv "$*"
                     ;;
+                #================================================
+                # So on and so forth
+                #================================================
                 application/pdf | application/postscript)
                     zathura "$*"
                     ;;
@@ -54,19 +63,20 @@ while :; do
                     --bind=tab:down,btab:up)
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
-        --rofi-search)
-            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                rofi -sort true -sorting-method fzf -dmenu -i -p Open)
-            [ "$QUERY" ] && searchnlaunch "$QUERY"
-            ;;
         --tmux-search)
             [ "$(tmux ls)" ] || tmux new-session -d
             tmux new-window "$0 --fzf-search"
             if pidof "$TERMINAL"; then
-                xdo activate -N Alacritty
+                [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
+                    xdo activate -N Alacritty
             else
                 "$TERMINAL" -e tmux attach
             fi
+            ;;
+        --rofi-search)
+            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+                rofi -sort true -sorting-method fzf -dmenu -i -p Open)
+            [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --generate)
             PATHS=$(grep -v "^#" ~/.config/bolt/paths)

@@ -14,6 +14,15 @@ thead() {
     [ -n "$line" ] && printf %s "$line"
 }
 
+searchnlaunch() {
+    RESULT=$(grep "$1" "$SEARCHLIST" | thead 1)
+    if [ "$RESULT" ]; then
+        "$0" --launch "$RESULT"
+    else
+        "$BROWSER" google.com/search\?q="$1"
+    fi
+}
+
 while :; do
     case $1 in
         --launch)
@@ -21,30 +30,42 @@ while :; do
             # Modify this section according to your preference
             case $(file --mime-type "$*" -bL) in
                 # Find out the mimetype of the file you wannna launch
-                inode/directory)
-                    # Launch using your favorite programs
-                    $TERMINAL -e explore "$*"
-                    ;;
-                text/* | inode/x-empty | application/json | application/octet-stream)
-                    $TERMINAL -e "$EDITOR" "$*"
-                    ;;
                 video/*)
+                    # Launch using your favorite programs
                     mpv "$*"
                     ;;
                 application/pdf | application/postscript)
                     zathura "$*"
                     ;;
+                inode/directory)
+                    explore "$*"
+                    ;;
+                text/* | inode/x-empty | application/json | application/octet-stream)
+                    "$EDITOR" "$*"
+                    ;;
             esac
             ;;
-        --search)
+        --fzf-search)
+            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+                fzf --reverse -e -i -m \
+                    --border --margin 15%,25% \
+                    --info hidden \
+                    --prompt "launch " \
+                    --bind=tab:down,btab:up)
+            [ "$QUERY" ] && searchnlaunch "$QUERY"
+            ;;
+        --rofi-search)
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 rofi -sort true -sorting-method fzf -dmenu -i -p Open)
-            [ "$QUERY" ] || exit 1
-            RESULT=$(grep "$QUERY" "$SEARCHLIST" | thead 1)
-            if [ "$RESULT" ]; then
-                "$0" --launch "$RESULT"
+            [ "$QUERY" ] && searchnlaunch "$QUERY"
+            ;;
+        --tmux-search)
+            [ "$(tmux ls)" ] || tmux new-session -d
+            tmux new-window "$0 --fzf-search"
+            if pidof "$TERMINAL"; then
+                xdo activate -N Alacritty
             else
-                "$BROWSER" google.com/search\?q="$QUERY"
+                "$TERMINAL" -e tmux attach
             fi
             ;;
         --generate)
@@ -65,4 +86,3 @@ while :; do
     esac
     shift
 done
-exit 0

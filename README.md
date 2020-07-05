@@ -26,6 +26,8 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  [Inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
+-  **tmux && fzf** (optional)
+
 ## Prerequisite
 
 -  Modify the launch section of the source code according to your preference
@@ -43,9 +45,11 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 -  run `bolt --generate --watch` at startup to generate and monitor the search list respectively
 
--  Bind a key combination with the command `bolt --search` to launch the prompt
+-  Bind a key combination with the command `bolt --rofi-search` to launch the prompt
 
 -  Type the keyword, press enter and baam!
+
+-  (Optional) You can also use `bolt --tmux-launch` && `bolt --fzf-search` at your own discretion
 
 ## Uninstallation
 
@@ -58,6 +62,8 @@ sudo make uninstall
 -  **24/06/20**:- Added two column prompt for more accurate searching
 
 -  **30/06/20**:- Added googling support
+
+-  **05/07/20**:- Added tmux and fzf support
 
 ## FAQ
 

@@ -61,6 +61,8 @@ sudo make uninstall
 
 ## Patches
 
+-  **21/06/20**:- Added support for names with spaces
+
 -  **24/06/20**:- Added two column prompt for more accurate searching
 
 -  **30/06/20**:- Added googling support

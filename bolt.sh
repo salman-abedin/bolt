@@ -64,8 +64,9 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            tmux new-session -d \; switch-client
-            tmux send-keys "$0 --fzf-search" "Enter"
+            tmux new-session -d \; \
+                switch-client \; \
+                send-keys "$0 --fzf-search" "Enter"
             if pidof "$TERMINAL"; then
                 [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                     xdo activate -N Alacritty

@@ -64,15 +64,14 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            tmux new-session -d \; \
-                switch-client \; \
-                send-keys "$0 --fzf-search" "Enter"
+            tmux new-session -d \; switch-client
             if pidof "$TERMINAL"; then
                 [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                     xdo activate -N Alacritty
             else
-                "$TERMINAL" -e tmux attach
+                "$TERMINAL" -e tmux attach &
             fi
+            tmux send-keys "$0 --fzf-search" "Enter"
             ;;
         --rofi-search)
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |

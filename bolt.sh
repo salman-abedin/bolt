@@ -71,7 +71,7 @@ while :; do
             else
                 "$TERMINAL" -e tmux attach &
             fi
-            tmux send-keys "$0 --fzf-search" "Enter"
+            tmux send "$0 --fzf-search" "Enter"
             ;;
         --rofi-search)
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |

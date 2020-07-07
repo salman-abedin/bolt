@@ -6,17 +6,17 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 # Features
 
--  Personalized search list
+-  Personalized result
 
--  A **filters** file to filter out irrelevant matches
+-  Filtering of irrelevant files
 
--  A monitoring script to update the search list in real-time
+-  Real-time update of the search list
 
--  A custom launch script to easily define launch programs (unlike **xdg-open**)
+-  Customized application launching that can be defined easily (unlike **xdg-open**)
 
 -  Googling capability
 
--  Runs as fast as it gets! (hint: shellscript)
+-  Runs as fast as it gets! (hint: POSIX compliant shellscript)
 
 ## Dependencies
 
@@ -61,7 +61,7 @@ sudo make uninstall
 
 ## Patches
 
--  **21/06/20**:- Added support for names with spaces
+-  **21/06/20**:- Added support for launching files with spaces in the name
 
 -  **24/06/20**:- Added two column prompt for more accurate searching
 

@@ -6,7 +6,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 # Features
 
--  A **paths** file to generate a personalized search list
+-  Personalized search list
 
 -  A **filters** file to filter out irrelevant matches
 

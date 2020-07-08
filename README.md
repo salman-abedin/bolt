@@ -22,12 +22,12 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  shift, grep, sed, find, awk, file
 
--  [Rofi](https://github.com/davatorium/rofi)
+-  [rofi](https://github.com/davatorium/rofi)
 
--  [Inotify-tools](https://github.com/inotify-tools/inotify-tools)
+-  [inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
--  [Tmux](https://github.com/tmux/tmux),
-   [FZF](https://github.com/junegunn/fzf),
+-  [tmux](https://github.com/tmux/tmux),
+   [fzf](https://github.com/junegunn/fzf),
    [xdo](https://github.com/baskerville/xdo) (optional)
 
 ## Prerequisite

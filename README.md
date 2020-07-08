@@ -1,5 +1,9 @@
 ![](preview/bolt.gif)
 
+# Bolt preview on DistroTube
+
+[![](preview/youtube.png)](https://www.youtube.com/watch?v=mBNLzHcUtTo&t=5m22s&fbclid=IwAR3L2kyohAIOzuBkj1sZPg14b9OYhpiN43UE_Gg39FNtkHaV0ygklnRbqwE)
+
 # Bolt: Lighting fast launcher for the fastest Unix workflow ever
 
 Bolt prompts you for keywords to your local files, directories or Google search and launches them respectively.

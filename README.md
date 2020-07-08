@@ -51,7 +51,7 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 
 -  Type the keyword, press enter and baam!
 
--  (Optional) You can also use `bolt --tmux-launch` && `bolt --fzf-search` to use bolt inside the terminal
+-  (Optional) You can also use `bolt --tmux-launch` & `bolt --fzf-search` to use bolt inside the terminal
 
 ## Uninstallation
 

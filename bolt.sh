@@ -47,10 +47,19 @@ while :; do
                     zathura "$*"
                     ;;
                 inode/directory)
-                    explore "$*"
+                    explore "$*" ||
+                        $TERMINAL -e explore "$*"
+                    # if pidof "$TERMIANL"; then
+                    #     explore "$*"
+                    # else
+                    #     $TERMINAL -e explore "$*"
+                    # fi
+
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
                     "$EDITOR" "$*"
+                    # "$EDITOR" "$*" ||
+                    #     $TERMINAL -e "$EDITOR" "$*"
                     ;;
             esac
             ;;
@@ -59,8 +68,8 @@ while :; do
                 fzf --reverse -e -i -m \
                     --border --margin 15%,25% \
                     --info hidden \
-                    --prompt "launch " \
-                    --bind=tab:down,btab:up)
+                    --bind=tab:down,btab:up \
+                    --prompt "launch ")
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --tmux-search)

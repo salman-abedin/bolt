@@ -47,14 +47,9 @@ while :; do
                     zathura "$*"
                     ;;
                 inode/directory)
-                    explore "$*" ||
-                        $TERMINAL -e explore "$*"
-                    # if pidof "$TERMIANL"; then
-                    #     explore "$*"
-                    # else
+                    explore "$*"
+                    # explore "$*" ||
                     #     $TERMINAL -e explore "$*"
-                    # fi
-
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
                     "$EDITOR" "$*"

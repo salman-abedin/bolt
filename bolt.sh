@@ -60,8 +60,10 @@ while :; do
             ;;
         --fzf-search)
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                fzf --reverse -e -i -m \
-                    --border --margin 15%,25% \
+                fzf -e -i \
+                    --reverse \
+                    --border \
+                    --margin 15%,25% \
                     --info hidden \
                     --bind=tab:down,btab:up \
                     --prompt "launch ")

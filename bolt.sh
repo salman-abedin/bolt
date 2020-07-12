@@ -59,6 +59,7 @@ while :; do
             esac
             ;;
         --fzf-search)
+            # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 fzf -e -i \
                     --reverse \

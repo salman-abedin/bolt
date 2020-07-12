@@ -70,6 +70,7 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --tmux-search)
+            launch --tmux 2> /dev/null
             if pidof tmux; then
                 tmux new-window
             else

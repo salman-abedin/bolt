@@ -74,7 +74,7 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            launch --tmux 2> /dev/null
+            launch --tmux 2> /dev/null # Personal Script
             if pidof tmux; then
                 tmux new-window
             else

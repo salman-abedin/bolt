@@ -10,7 +10,7 @@ thead() {
         echo "$line"
         i=$((i + 1))
         [ "$i" = "$1" ] && return
-    done < /dev/stdin
+    done
     [ -n "$line" ] && printf %s "$line"
 }
 

@@ -97,7 +97,7 @@ I hate xdg-open. Because...
 : Terminal swallowing
 
 [Uniblocks](https://github.com/salman-abedin/uniblocks)
-: The status bar
+: The status bar wrapper
 
 ## Contact
 

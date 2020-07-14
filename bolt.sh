@@ -3,19 +3,22 @@
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist
 
-# "head" alternative
+#===============================================================================
+# Minimized "head"
 # Forked from https://github.com/dylanaraps/pure-bash-bible#get-the-first-n-lines-of-a-file
-thead() {
+#===============================================================================
+head() {
+    MAX=${1#-}
     while read -r line; do
         echo "$line"
         i=$((i + 1))
-        [ "$i" = "$1" ] && return
+        [ "$i" = "$MAX" ] && return
     done
     [ -n "$line" ] && printf %s "$line"
 }
 
 searchnlaunch() {
-    RESULT=$(grep "$1" "$SEARCHLIST" | thead 1)
+    RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
     if [ "$RESULT" ]; then
         "$0" --launch "$RESULT"
     else

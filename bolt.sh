@@ -16,6 +16,12 @@ while :; do
     case $1 in
         --launch)
             shift
+            case $1 in
+                *.link)
+                    $BROWSER "$(cat "$*")"
+                    exit
+                    ;;
+            esac
             #========================================================
             # Modify this section according to your preference
             #========================================================

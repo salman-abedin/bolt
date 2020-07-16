@@ -3,20 +3,6 @@
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist
 
-#===============================================================================
-# Minimized "head"
-# Forked from https://github.com/dylanaraps/pure-bash-bible#get-the-first-n-lines-of-a-file
-#===============================================================================
-head() {
-    MAX=${1#-}
-    while read -r line; do
-        echo "$line"
-        i=$((i + 1))
-        [ "$i" = "$MAX" ] && return
-    done
-    [ -n "$line" ] && printf %s "$line"
-}
-
 searchnlaunch() {
     RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
     if [ "$RESULT" ]; then
@@ -94,12 +80,22 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --generate)
-            PATHS=$(grep -v "^#" ~/.config/bolt/paths)
-            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            find -L $PATHS -maxdepth $MAXDEPTH |
-                grep -Ev "$FILTERS" \
-                    > "$SEARCHLIST"
+            # PATHS=$(grep -v "^#" ~/.config/bolt/paths)
+            # FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
+            # find $PATHS -maxdepth $MAXDEPTH |
+            #     grep -Ev "$FILTERS" \
+            #         > "$SEARCHLIST"
+
+            # FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed -e 's/^\./\\./' | awk '{printf "%s\\|",$0;}')
+            # find $PATHS \
+            #     -maxdepth $MAXDEPTH \
+            #     ! -regex ".*\($FILTERS\).*"
+
+            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed -e 's/^\./\\./' | awk '{printf "%s\\|",$0;}' | sed 's/\\|$//g')
+            grep -v "^#" ~/.config/bolt/paths |
+                xargs -I % find % -maxdepth 5 ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
             ;;
+
         --watch)
             PATHS=$(grep -v "^#" ~/.config/bolt/paths)
             inotifywait -m -r -e create,delete,move $PATHS |

@@ -80,22 +80,10 @@ while :; do
             [ "$QUERY" ] && searchnlaunch "$QUERY"
             ;;
         --generate)
-            # PATHS=$(grep -v "^#" ~/.config/bolt/paths)
-            # FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed 's/^\./\\./' | tr '\n' '|' | sed 's/|$//')
-            # find $PATHS -maxdepth $MAXDEPTH |
-            #     grep -Ev "$FILTERS" \
-            #         > "$SEARCHLIST"
-
-            # FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed -e 's/^\./\\./' | awk '{printf "%s\\|",$0;}')
-            # find $PATHS \
-            #     -maxdepth $MAXDEPTH \
-            #     ! -regex ".*\($FILTERS\).*"
-
-            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | sed -e 's/^\./\\./' | awk '{printf "%s\\|",$0;}' | sed 's/\\|$//g')
+            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
             grep -v "^#" ~/.config/bolt/paths |
-                xargs -I % find % -maxdepth 5 ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
+                xargs -I % find % -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
             ;;
-
         --watch)
             PATHS=$(grep -v "^#" ~/.config/bolt/paths)
             inotifywait -m -r -e create,delete,move $PATHS |

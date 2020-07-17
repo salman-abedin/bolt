@@ -7,7 +7,7 @@ SEARCHLIST=/tmp/searchlist
 
 searchnlaunch() {
     RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
-    if [ "$RESULT" ]; then
+    if [ -n "$RESULT" ]; then
         "$0" --launch "$RESULT"
     else
         "$BROWSER" google.com/search\?q="$1"
@@ -68,7 +68,7 @@ while :; do
                 searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            launch --tmux 2> /dev/null # Personal Script
+            launch --tmux 2> /dev/null # Personal Script(chill & ignore)
             if pidof tmux; then
                 tmux new-window
             else

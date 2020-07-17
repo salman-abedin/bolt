@@ -62,8 +62,8 @@ while :; do
                     --margin 15%,25% \
                     --info hidden \
                     --bind=tab:down,btab:up \
-                    --prompt "launch ")
-            [ "$QUERY" ] && searchnlaunch "$QUERY"
+                    --prompt "launch ") &&
+                searchnlaunch "$QUERY"
             ;;
         --tmux-search)
             launch --tmux 2> /dev/null # Personal Script
@@ -82,17 +82,16 @@ while :; do
             ;;
         --rofi-search)
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                rofi -sort true -sorting-method fzf -dmenu -i -p Open)
-            [ "$QUERY" ] && searchnlaunch "$QUERY"
+                rofi -sort true -sorting-method fzf -dmenu -i -p Open) &&
+                searchnlaunch "$QUERY"
             ;;
         --generate)
             FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-            grep -v "^#" ~/.config/bolt/paths |
-                xargs -I % find % -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
+            find $(grep -v "^#" ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
             ;;
         --watch)
-            PATHS=$(grep -v "^#" ~/.config/bolt/paths)
-            inotifywait -m -r -e create,delete,move $PATHS |
+            inotifywait -m -r -e create,delete,move \
+                $(grep -v "^#" ~/.config/bolt/paths) |
                 while read -r line; do
                     "$0" --generate
                 done &

@@ -39,18 +39,13 @@ while :; do
                     ;;
                 inode/directory)
                     explore "$*"
-                    # explore "$*" ||
-                    #     $TERMINAL -e explore "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
                     "$EDITOR" "$*"
-                    # "$EDITOR" "$*" ||
-                    #     $TERMINAL -e "$EDITOR" "$*"
                     ;;
             esac
             ;;
         --fzf-search)
-            # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
             QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
                 fzf -e -i \
                     --reverse \
@@ -62,7 +57,6 @@ while :; do
                 searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            launch --tmux 2> /dev/null # Personal Script(chill & ignore)
             if pidof tmux; then
                 tmux new-window
             else

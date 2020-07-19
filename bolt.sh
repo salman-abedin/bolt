@@ -37,12 +37,6 @@ while :; do
                 application/pdf | application/postscript)
                     zathura "$*"
                     ;;
-                inode/directory)
-                    explore "$*"
-                    ;;
-                text/* | inode/x-empty | application/json | application/octet-stream)
-                    "$EDITOR" "$*"
-                    ;;
             esac
             ;;
         --fzf-search)

@@ -24,25 +24,7 @@ while :; do
                     exit
                     ;;
             esac
-            #========================================================
-            # Modify this section according to your preference
-            #========================================================
             case $(file --mime-type "$*" -bL) in
-                #====================================================
-                # Find out the mimetype of the file you wannna launch
-                #====================================================
-                video/*)
-                    #================================================
-                    # Launch using your favorite programs
-                    #================================================
-                    mpv "$*"
-                    ;;
-                #================================================
-                # So on and so forth
-                #================================================
-                application/pdf | application/postscript)
-                    zathura "$*"
-                    ;;
                 inode/directory)
                     explore "$*"
                     # explore "$*" ||
@@ -68,7 +50,7 @@ while :; do
                 searchnlaunch "$QUERY"
             ;;
         --tmux-search)
-            launch --tmux 2> /dev/null # Personal Script(chill & ignore)
+            launch --tmux 2> /dev/null
             if pidof tmux; then
                 tmux new-window
             else

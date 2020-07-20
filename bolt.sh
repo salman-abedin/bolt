@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
-#
-# Prompts you for keywords to your local files, directories or Google search and launches them respectively.
 
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist

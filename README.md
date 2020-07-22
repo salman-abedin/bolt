@@ -16,7 +16,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  Googling capability
 
--  Runs as fast as it gets! (hint: ~100 lines of POSIX shellscript)
+-  Runs as fast as it gets! (hint: ~100 lines of POSIX shellscripting & early updating)
 
 ## Dependencies
 

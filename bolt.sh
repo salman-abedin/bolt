@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 #
 # Prompts you for keywords to your local files, directories or Google search and launches them respectively.
+# Dependencies: -  grep, sed, find, awk, file
 
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist

@@ -84,11 +84,14 @@ I hate xdg-open. Because...
 
 ## Repos you might be interested in
 
-[Uniblocks](https://github.com/salman-abedin/uniblocks)
+[uniblocks](https://github.com/salman-abedin/uniblocks)
 : The status bar wrapper
 
 [puri](https://github.com/salman-abedin/puri)
 : Minimal URL launcher
+
+[tide](https://github.com/salman-abedin/puri)
+: Minimal Transmission CLI client
 
 [Crystal](https://github.com/salman-abedin/crystal)
 : The transparent setup

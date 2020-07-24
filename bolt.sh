@@ -25,8 +25,8 @@ launch() {
 }
 
 searchnlaunch() {
-    # RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
-    RESULT=$(getmatch "$1" "$SEARCHLIST")
+    RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
+    # RESULT=$(getmatch "$1" "$SEARCHLIST")
     if [ -n "$RESULT" ]; then
         "$0" --launch "$RESULT"
     else

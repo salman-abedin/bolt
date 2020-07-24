@@ -6,15 +6,15 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 # Features
 
--  Personalized result
+-  Personalized search list
 
 -  Filtering of irrelevant files
-
--  Real-time update of the search list
 
 -  Customized application launching that can be defined easily (unlike **xdg-open**)
 
 -  Googling capability
+
+-  (Optional) Real-time update of the search list
 
 -  Runs as fast as it gets! (hint: ~100 lines of POSIX shellscripting & early updating)
 

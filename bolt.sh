@@ -19,7 +19,6 @@ while :; do
     case $1 in
         --launch)
             shift
-            ns here
             #========================================================
             # Modify this section according to your preference
             #========================================================
@@ -40,10 +39,12 @@ while :; do
                     zathura "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
-                    "$TERMINAL" "$EDITOR" "$*"
+                    st "$EDITOR" "$*"
+                    # "$TERMINAL" "$EDITOR" "$*"
                     ;;
                 inode/directory)
-                    "$TERMINAL" "$EXPLORER" "$*"
+                    st lf "$*"
+                    # "$TERMINAL" "$EXPLORER" "$*"
                     ;;
             esac
             ;;

@@ -24,11 +24,11 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  [rofi](https://github.com/davatorium/rofi)
 
--  [inotify-tools](https://github.com/inotify-tools/inotify-tools) (optional)
+-  (Optional) [inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
--  [tmux](https://github.com/tmux/tmux),
+-  (Optional) [tmux](https://github.com/tmux/tmux),
    [fzf](https://github.com/junegunn/fzf),
-   [xdo](https://github.com/baskerville/xdo) (optional)
+   [xdo](https://github.com/baskerville/xdo)
 
 ## Prerequisite
 

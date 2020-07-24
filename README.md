@@ -1,6 +1,6 @@
 ![](preview/bolt.gif)
 
-# Bolt: Lighting fast launcher for the fastest Unix workflow ever
+# Bolt: Lighting fast launcher wrapper for the fastest Unix workflow ever
 
 Bolt prompts you for keywords to your local files, directories or Google search and launches them respectively.
 
@@ -84,26 +84,15 @@ I hate xdg-open. Because...
 
 ## Repos you might be interested in
 
-[uniblocks](https://github.com/salman-abedin/uniblocks)
-: The status bar wrapper
-
-[puri](https://github.com/salman-abedin/puri)
-: Minimal URL launcher
-
-[tide](https://github.com/salman-abedin/puri)
-: Minimal Transmission CLI client
-
-[Crystal](https://github.com/salman-abedin/crystal)
-: The transparent setup
-
-[Magpie](https://github.com/salman-abedin/magpie)
-: The dotfiles
-
-[Alfred](https://github.com/salman-abedin/alfred)
-: The scripts
-
-[Devour](https://github.com/salman-abedin/devour)
-: Terminal swallowing
+| Name                                                    | Description                     |
+| ------------------------------------------------------- | ------------------------------- |
+| [uniblocks](https://github.com/salman-abedin/uniblocks) | The status bar wrapper          |
+| [tide](https://github.com/salman-abedin/puri)           | Minimal Transmission CLI client |
+| [puri](https://github.com/salman-abedin/puri)           | Minimal URL launcher            |
+| [devour](https://github.com/salman-abedin/devour)       | Terminal swallowing             |
+| [crystal](https://github.com/salman-abedin/crystal)     | The transparent setup           |
+| [Magpie](https://github.com/salman-abedin/magpie)       | The dotfiles                    |
+| [Alfred](https://github.com/salman-abedin/alfred)       | The scripts                     |
 
 ## Contact
 

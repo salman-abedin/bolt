@@ -39,12 +39,12 @@ while :; do
                     zathura "$*"
                     ;;
                 text/* | inode/x-empty | application/json | application/octet-stream)
-                    st "$EDITOR" "$*"
-                    # "$TERMINAL" "$EDITOR" "$*"
+                    "$TERMINAL" "$EDITOR" "$*"
+                    # st "$EDITOR" "$*"
                     ;;
                 inode/directory)
-                    st lf "$*"
-                    # "$TERMINAL" "$EXPLORER" "$*"
+                    "$TERMINAL" "$EXPLORER" "$*"
+                    # st lf "$*"
                     ;;
             esac
             ;;

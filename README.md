@@ -24,7 +24,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  [rofi](https://github.com/davatorium/rofi)
 
--  [inotify-tools](https://github.com/inotify-tools/inotify-tools)
+-  [inotify-tools](https://github.com/inotify-tools/inotify-tools) (optional)
 
 -  [tmux](https://github.com/tmux/tmux),
    [fzf](https://github.com/junegunn/fzf),
@@ -45,13 +45,15 @@ git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make inst
 -  Create a **paths** and a **filters** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
--  run `bolt --generate --watch` at startup to generate and monitor the search list respectively
+-  run `bolt --generate` at startup to generate the search list
+
+   -  (Optional) run `bolt --watch` at startup to update the search list on realtime
 
 -  Bind a key combination with the command `bolt --rofi-search` to launch the prompt
 
--  Type the keyword, press enter and baam!
+   -  (Optional) run `bolt --tmux-launch` or `bolt --fzf-search` to use bolt inside the terminal
 
--  (Optional) You can also use `bolt --tmux-launch` & `bolt --fzf-search` to use bolt inside the terminal
+-  Type the keyword, press enter and baam!
 
 ## Uninstallation
 

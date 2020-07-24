@@ -32,7 +32,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 ## Prerequisite
 
--  Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L17) function according to your preference
+Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L17) function according to your preference.
 
 ## Installation
 

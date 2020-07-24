@@ -28,7 +28,7 @@ searchnlaunch() {
     RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
     # RESULT=$(getmatch "$1" "$SEARCHLIST")
     if [ -n "$RESULT" ]; then
-        "$0" --launch "$RESULT"
+        launch "$RESULT"
     else
         "$BROWSER" google.com/search\?q="$1"
     fi
@@ -54,7 +54,7 @@ watch() {
     inotifywait -m -r -e create,delete,move \
         $(grep -v "^#" ~/.config/bolt/paths) |
         while read -r line; do
-            "$0" --generate
+            generate
         done &
 }
 
@@ -94,10 +94,8 @@ fzfsearch() {
 }
 
 generate() {
-    # FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
     FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
     find $(getconfig ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
-    # find $(grep -v "^#" ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
 
 while :; do
@@ -108,6 +106,7 @@ while :; do
         --launch) launch "$2" ;;
         --rofi-search) rofisearch ;;
         --watch) watch ;;
+        *) break ;;
     esac
     shift
 done

@@ -6,89 +6,116 @@
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist
 
+#========================================================
+# Modify this section according to your preference
+#========================================================
+launch() {
+    case $(file --mime-type "$1" -bL) in
+        #====================================================
+        # Find out the mimetype of the file you wannna launch
+        #====================================================
+        video/*)
+            #================================================
+            # Launch using your favorite programs
+            #================================================
+            mpv "$1"
+            ;;
+        #================================================
+        # So on and so forth
+        #================================================
+        application/pdf | application/epub+zip)
+            zathura "$1"
+            ;;
+        text/* | inode/x-empty | application/json | application/octet-stream)
+            "$TERMINAL" "$EDITOR" "$1"
+            # st "$EDITOR" "$*"
+            ;;
+        inode/directory)
+            "$TERMINAL" "$EXPLORER" "$*"
+            # st lf "$*"
+            ;;
+    esac
+}
+
 searchnlaunch() {
     RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
     if [ -n "$RESULT" ]; then
-        "$0" --launch "$RESULT"
+        launch "$RESULT"
     else
         "$BROWSER" google.com/search\?q="$1"
     fi
 }
 
+getmatch() {
+    while IFS= read -r line; do
+        case $line in
+            *$1) echo "$line" ;;
+        esac
+    done < "$2"
+}
+
+getconfig() {
+    while IFS= read -r line; do
+        case $line in
+            [[:alnum:]]* | /*) echo "$line" ;;
+        esac
+    done < "$1"
+}
+
+watch() {
+    inotifywait -m -r -e create,delete,move \
+        $(grep -v "^#" ~/.config/bolt/paths) |
+        while read -r line; do
+            generate
+        done &
+}
+
+rofisearch() {
+    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+        rofi -sort true -sorting-method fzf -dmenu -i -p Open) &&
+        searchnlaunch "$QUERY"
+}
+
+tmuxsearch() {
+    if pidof tmux; then
+        tmux new-window
+    else
+        tmux new-session -d \; switch-client
+    fi
+    if pidof "$TERMINAL"; then
+        [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
+            xdo activate -N Alacritty
+    else
+        "$TERMINAL" -e tmux attach &
+    fi
+    tmux send "$0 --fzf-search" "Enter"
+}
+
+fzfsearch() {
+    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+        fzf -e -i \
+            --reverse \
+            --border \
+            --margin 15%,25% \
+            --info hidden \
+            --bind=tab:down,btab:up \
+            --prompt "launch ") &&
+        searchnlaunch "$QUERY"
+}
+
+generate() {
+    FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
+    find $(getconfig ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
+}
+
 while :; do
     case $1 in
-        --launch)
-            shift
-            #========================================================
-            # Modify this section according to your preference
-            #========================================================
-            case $(file --mime-type "$*" -bL) in
-                #====================================================
-                # Find out the mimetype of the file you wannna launch
-                #====================================================
-                video/*)
-                    #================================================
-                    # Launch using your favorite programs
-                    #================================================
-                    mpv "$*"
-                    ;;
-                #================================================
-                # So on and so forth
-                #================================================
-                application/pdf | application/postscript)
-                    zathura "$*"
-                    ;;
-                text/* | inode/x-empty | application/json | application/octet-stream)
-                    "$TERMINAL" "$EDITOR" "$*"
-                    # st "$EDITOR" "$*"
-                    ;;
-                inode/directory)
-                    "$TERMINAL" "$EXPLORER" "$*"
-                    # st lf "$*"
-                    ;;
-            esac
-            ;;
-        --fzf-search)
-            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                fzf -e -i \
-                    --reverse \
-                    --border \
-                    --margin 15%,25% \
-                    --info hidden \
-                    --bind=tab:down,btab:up \
-                    --prompt "launch ") &&
-                searchnlaunch "$QUERY"
-            ;;
-        --tmux-search)
-            if pidof tmux; then
-                tmux new-window
-            else
-                tmux new-session -d \; switch-client
-            fi
-            if pidof "$TERMINAL"; then
-                [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
-                    xdo activate -N Alacritty
-            else
-                "$TERMINAL" -e tmux attach &
-            fi
-            tmux send "$0 --fzf-search" "Enter"
-            ;;
-        --rofi-search)
-            QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-                rofi -sort true -sorting-method fzf -dmenu -i -p Open) &&
-                searchnlaunch "$QUERY"
-            ;;
-        --generate)
-            FILTERS=$(grep -Ev "^#|^$" ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-            find $(grep -v "^#" ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
-            ;;
-        --watch)
-            inotifywait -m -r -e create,delete,move \
-                $(grep -v "^#" ~/.config/bolt/paths) |
-                while read -r line; do
-                    "$0" --generate
-                done &
-            ;;
+        --generate) generate ;;
+        --tmux-search) tmuxsearch ;;
+        --fzf-search) fzfsearch ;;
+        --launch) launch "$2" ;;
+        --rofi-search) rofisearch ;;
+        --watch) watch ;;
         *) break ;;
     esac
     shift

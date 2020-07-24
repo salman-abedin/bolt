@@ -1,6 +1,6 @@
 ![](preview/bolt.gif)
 
-# Bolt: Lighting fast launcher wrapper for the fastest Unix workflow ever
+# Bolt: A launcher wrapper for having a lightning fast Unix workflow
 
 Bolt prompts you for keywords to your local files, directories or Google search and launches them respectively.
 

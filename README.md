@@ -30,15 +30,15 @@ Bolt prompts you for keywords to your local files, directories or Google search 
    [fzf](https://github.com/junegunn/fzf),
    [xdo](https://github.com/baskerville/xdo)
 
-## Prerequisite
-
-Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L17) function according to your preference. (Reinstall in case of post-install editing)
-
 ## Installation
 
 ```sh
 git clone https://github.com/salman-abedin/bolt.git && cd bolt && sudo make install
 ```
+
+## Prerequisite
+
+Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L17) function according to your preference and reinstall.
 
 ## Usage
 

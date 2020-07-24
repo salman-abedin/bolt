@@ -20,7 +20,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 ## Dependencies
 
--  grep, sed, find, awk, file
+-  grep, sed, find, awk, file, xargs
 
 -  [rofi](https://github.com/davatorium/rofi)
 

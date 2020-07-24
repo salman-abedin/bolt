@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 #
 # Prompts you for keywords to your local files, directories or Google search and launches them respectively.
-# Dependencies: grep, sed, find, awk, file
+# Dependencies: grep, sed, find, awk, file, xargs
 
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist
@@ -54,14 +54,6 @@ getconfig() {
     done < "$1"
 }
 
-watch() {
-    inotifywait -m -r -e create,delete,move \
-        $(grep -v "^#" ~/.config/bolt/paths) |
-        while read -r line; do
-            generate
-        done &
-}
-
 rofisearch() {
     QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
         rofi -sort true -sorting-method fzf -dmenu -i -p Open) &&
@@ -95,9 +87,19 @@ fzfsearch() {
         searchnlaunch "$QUERY"
 }
 
+watch() {
+    grep -v "^#" ~/.config/bolt/paths |
+        xargs inotifywait -m -r -e create,delete,move |
+        while read -r line; do
+            generate
+        done &
+}
+
 generate() {
     FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-    find $(getconfig ~/.config/bolt/paths) -maxdepth $MAXDEPTH ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
+    getconfig ~/.config/bolt/paths |
+        xargs -I% find % -maxdepth $MAXDEPTH \
+            ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
 
 while :; do

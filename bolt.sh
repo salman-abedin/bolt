@@ -57,7 +57,7 @@ rofisearch() {
 }
 
 tmuxsearch() {
-    launch --tmux 2> /dev/null
+    /usr/local/bin/launch --tmux 2> /dev/null
     if pidof tmux; then
         tmux new-window
     else

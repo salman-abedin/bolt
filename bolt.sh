@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 MAXDEPTH=6
 SEARCHLIST=/tmp/searchlist

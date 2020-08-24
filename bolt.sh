@@ -57,7 +57,7 @@ rofisearch() {
 }
 
 tmuxsearch() {
-   /usr/local/bin/launch --tmux 2> /dev/null
+   /usr/local/bin/launch -t 2> /dev/null
    if pidof tmux; then
       tmux new-window
    else
@@ -65,7 +65,8 @@ tmuxsearch() {
    fi
    if pidof "$TERMINAL"; then
       [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
-         xdo activate -N Alacritty
+         xdo activate -N st-256color
+      # xdo activate -N Alacritty
    else
       "$TERMINAL" -e tmux attach &
    fi

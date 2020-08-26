@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAXDEPTH=6
+MAXDEPTH=5
 SEARCHLIST=/tmp/searchlist
 
 launch() {

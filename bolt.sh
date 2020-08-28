@@ -93,16 +93,11 @@ searchnlaunch() {
 fzfsearch() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-      fzf -e -i -m \
-         --preview 'realpath {}' \
-         --reverse \
-         --border \
-         --margin 15%,25% \
-         --info hidden \
-         --bind=tab:down,btab:up \
-         --prompt "launch ") &&
+      fzf --prompt "launch ") &&
       searchnlaunch "$QUERY"
 }
+# --preview 'realpath {}' \
+# -e
 
 generate() {
    FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
@@ -110,6 +105,9 @@ generate() {
       xargs -I% find % -maxdepth $MAXDEPTH \
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
+
+# export FZF_DEFAULT_OPTS="-m -i --reverse --border --margin 30%,30% --info hidden --bind=tab:down,btab:up"
+export FZF_DEFAULT_OPTS="-m -i --reverse --border --margin 30%,30% --info hidden --cycle"
 
 while :; do
    case $1 in

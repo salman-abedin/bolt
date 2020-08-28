@@ -68,7 +68,7 @@ bolt_launch() {
             }
             dir=$(for file in * .*; do
                [ "$file" != . ] && echo "$file"
-            done | fzf)
+            done | fzf --prompt explore)
             [ -z "$dir" ] && $0 -f && break
          done
          ;;
@@ -96,8 +96,6 @@ fzfsearch() {
       fzf --prompt "launch ") &&
       searchnlaunch "$QUERY"
 }
-# --preview 'realpath {}' \
-# -e
 
 generate() {
    FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
@@ -106,8 +104,11 @@ generate() {
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
 
-# export FZF_DEFAULT_OPTS="-m -i --reverse --border --margin 30%,30% --info hidden --bind=tab:down,btab:up"
-export FZF_DEFAULT_OPTS="-m -i --reverse --border --info hidden --cycle --no-unicode --margin 15%,30%"
+export FZF_DEFAULT_OPTS="-i --reverse --border --info hidden --cycle --no-unicode --margin 15%,30% --bind '?:preview:cat {}'"
+# --bind=tab:down,btab:up
+# -m
+# -e
+# --preview 'realpath {}' \
 
 while :; do
    case $1 in

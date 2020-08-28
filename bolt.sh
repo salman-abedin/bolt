@@ -34,7 +34,7 @@ rofisearch() {
 }
 
 tmuxsearch() {
-   /usr/local/bin/launch -t 2> /dev/null
+   launch -t 2> /dev/null
    if pidof tmux; then
       tmux new-window
    else
@@ -63,7 +63,7 @@ bolt_launch() {
          dir=$1
          while :; do
             cd "$dir" 2> /dev/null || {
-               $0 -l "$dir"
+               bolt_launch "$(realpath "$dir")"
                exit
             }
             dir=$(for file in * .*; do
@@ -93,7 +93,8 @@ searchnlaunch() {
 fzfsearch() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-      fzf -e -i \
+      fzf -e -i -m \
+         --preview 'realpath {}' \
          --reverse \
          --border \
          --margin 15%,25% \

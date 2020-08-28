@@ -50,42 +50,12 @@ tmuxsearch() {
    tmux send "$0 --fzf-search" "Enter"
 }
 
-bolt_launch() {
-   case $1 in
-      *.link)
-         $BROWSER "$(cat "$1")"
-         exit
-         ;;
-   esac
-   case $(file --mime-type "$1" -bL) in
-      inode/directory)
-         # explore "$1"
-         dir=$1
-         while :; do
-            cd "$dir" 2> /dev/null || bolt_launch "$(realpath "$dir")"
-            dir=$(
-               for file in * .*; do
-                  [ "$file" != . ] && echo "$file"
-               done |
-                  fzf --prompt "explore: " --bind "]:execute(lf $(realpath {})),[:execute(tmux split-window -h \; swap-pane -d -t :.1)"
-            )
-            [ -z "$dir" ] && break
-         done
-         $0 -f
-         ;;
-      text/* | inode/x-empty | application/json | application/octet-stream)
-         "$EDITOR" "$*"
-         # "$EDITOR" "$*" ||
-         #     $TERMINAL -e "$EDITOR" "$*"
-         ;;
-   esac
-}
-
 searchnlaunch() {
    RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
    # RESULT=$(getmatch "$1" "$SEARCHLIST")
    if [ -n "$RESULT" ]; then
-      bolt_launch "$RESULT"
+      launch -f "$RESULT"
+      $0 -f
    else
       "$BROWSER" google.com/search\?q="$1"
    fi
@@ -115,7 +85,6 @@ while :; do
       --generate | -g) generate ;;
       --fzf-search | -f) fzfsearch ;;
       --tmux-search | -t) tmuxsearch ;;
-      --launch | -l) bolt_launch "$2" ;;
       --rofi-search | -r) rofisearch ;;
       --watch | -w) watch ;;
       *) break ;;

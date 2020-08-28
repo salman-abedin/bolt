@@ -62,15 +62,16 @@ bolt_launch() {
          # explore "$1"
          dir=$1
          while :; do
-            cd "$dir" 2> /dev/null || {
-               bolt_launch "$(realpath "$dir")"
-               exit
-            }
-            dir=$(for file in * .*; do
-               [ "$file" != . ] && echo "$file"
-            done | fzf --prompt explore)
-            [ -z "$dir" ] && $0 -f && break
+            cd "$dir" 2> /dev/null || bolt_launch "$(realpath "$dir")"
+            dir=$(
+               for file in * .*; do
+                  [ "$file" != . ] && echo "$file"
+               done |
+                  fzf --prompt "explore: " --bind "]:execute(lf $(realpath {})),[:execute(tmux split-window -h \; swap-pane -d -t :.1)"
+            )
+            [ -z "$dir" ] && break
          done
+         $0 -f
          ;;
       text/* | inode/x-empty | application/json | application/octet-stream)
          "$EDITOR" "$*"
@@ -93,7 +94,7 @@ searchnlaunch() {
 fzfsearch() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-      fzf --prompt "launch ") &&
+      fzf --prompt "launch: ") &&
       searchnlaunch "$QUERY"
 }
 
@@ -104,8 +105,7 @@ generate() {
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
 
-export FZF_DEFAULT_OPTS="-i --reverse --border --info hidden --cycle --no-unicode --margin 15%,30% --bind '?:preview:cat {}'"
-# --bind=tab:down,btab:up
+export FZF_DEFAULT_OPTS="-i --reverse --border --info hidden --cycle --margin 15%,30% --bind=tab:down,btab:up"
 # -m
 # -e
 # --preview 'realpath {}' \

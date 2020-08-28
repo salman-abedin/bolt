@@ -107,7 +107,7 @@ generate() {
 }
 
 # export FZF_DEFAULT_OPTS="-m -i --reverse --border --margin 30%,30% --info hidden --bind=tab:down,btab:up"
-export FZF_DEFAULT_OPTS="-m -i --reverse --border --margin 30%,30% --info hidden --cycle"
+export FZF_DEFAULT_OPTS="-m -i --reverse --border --info hidden --cycle --no-unicode --margin 15%,30%"
 
 while :; do
    case $1 in

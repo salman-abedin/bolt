@@ -3,35 +3,12 @@
 MAXDEPTH=5
 SEARCHLIST=/tmp/searchlist
 
-launch() {
-   case $1 in
-      *.link)
-         $BROWSER "$(cat "$*")"
-         exit
-         ;;
-   esac
-   case $(file --mime-type "$*" -bL) in
-      inode/directory)
-         explore "$*"
-         # explore "$*" ||
-         #     $TERMINAL -e explore "$*"
-         ;;
-      text/* | inode/x-empty | application/json | application/octet-stream)
-         "$EDITOR" "$*"
-         # "$EDITOR" "$*" ||
-         #     $TERMINAL -e "$EDITOR" "$*"
-         ;;
-   esac
-}
-
-searchnlaunch() {
-   RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
-   # RESULT=$(getmatch "$1" "$SEARCHLIST")
-   if [ -n "$RESULT" ]; then
-      launch "$RESULT"
-   else
-      "$BROWSER" google.com/search\?q="$1"
-   fi
+watch() {
+   grep -v "^#" ~/.config/bolt/paths |
+      xargs inotifywait -m -r -e create,delete,move |
+      while read -r line; do
+         generate
+      done &
 }
 
 getmatch() {
@@ -73,6 +50,46 @@ tmuxsearch() {
    tmux send "$0 --fzf-search" "Enter"
 }
 
+bolt_launch() {
+   case $1 in
+      *.link)
+         $BROWSER "$(cat "$1")"
+         exit
+         ;;
+   esac
+   case $(file --mime-type "$1" -bL) in
+      inode/directory)
+         # explore "$1"
+         dir=$1
+         while :; do
+            cd "$dir" 2> /dev/null || {
+               $0 -l "$dir"
+               exit
+            }
+            dir=$(for file in * .*; do
+               [ "$file" != . ] && echo "$file"
+            done | fzf)
+            [ -z "$dir" ] && $0 -f && break
+         done
+         ;;
+      text/* | inode/x-empty | application/json | application/octet-stream)
+         "$EDITOR" "$*"
+         # "$EDITOR" "$*" ||
+         #     $TERMINAL -e "$EDITOR" "$*"
+         ;;
+   esac
+}
+
+searchnlaunch() {
+   RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
+   # RESULT=$(getmatch "$1" "$SEARCHLIST")
+   if [ -n "$RESULT" ]; then
+      bolt_launch "$RESULT"
+   else
+      "$BROWSER" google.com/search\?q="$1"
+   fi
+}
+
 fzfsearch() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
@@ -86,14 +103,6 @@ fzfsearch() {
       searchnlaunch "$QUERY"
 }
 
-watch() {
-   grep -v "^#" ~/.config/bolt/paths |
-      xargs inotifywait -m -r -e create,delete,move |
-      while read -r line; do
-         generate
-      done &
-}
-
 generate() {
    FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
    getconfig ~/.config/bolt/paths |
@@ -103,12 +112,12 @@ generate() {
 
 while :; do
    case $1 in
-      --generate) generate ;;
-      --tmux-search) tmuxsearch ;;
-      --fzf-search) fzfsearch ;;
-      --launch) launch "$2" ;;
-      --rofi-search) rofisearch ;;
-      --watch) watch ;;
+      --generate | -g) generate ;;
+      --fzf-search | -f) fzfsearch ;;
+      --tmux-search | -t) tmuxsearch ;;
+      --launch | -l) bolt_launch "$2" ;;
+      --rofi-search | -r) rofisearch ;;
+      --watch | -w) watch ;;
       *) break ;;
    esac
    shift

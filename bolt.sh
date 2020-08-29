@@ -75,7 +75,7 @@ generate() {
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
 
-export FZF_DEFAULT_OPTS="-i --reverse --border --info hidden --cycle --margin 15%,30% --bind=tab:down,btab:up"
+export FZF_DEFAULT_OPTS="-e -i --reverse --border --no-info --cycle --margin 15%,30% --bind=tab:down,btab:up,\;:accept,\':jump-accept"
 # -m
 # -e
 # --preview 'realpath {}' \

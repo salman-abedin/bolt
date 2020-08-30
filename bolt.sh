@@ -3,6 +3,12 @@
 MAXDEPTH=5
 SEARCHLIST=/tmp/searchlist
 
+mlocate_search() {
+   QUERY=$(locate / |
+      fzf --prompt "launch: ") &&
+      searchnlaunch "$QUERY"
+}
+
 watch() {
    grep -v "^#" ~/.config/bolt/paths |
       xargs inotifywait -m -r -e create,delete,move |
@@ -61,7 +67,7 @@ searchnlaunch() {
    fi
 }
 
-fzfsearch() {
+bolt_search() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
       fzf --prompt "launch: ") &&
@@ -83,7 +89,8 @@ export FZF_DEFAULT_OPTS="-e -i --reverse --border --no-info --cycle --margin 15%
 while :; do
    case $1 in
       --generate | -g) generate ;;
-      --fzf-search | -f) fzfsearch ;;
+      --bolt-search | -f) bolt_search ;;
+      --mlocate-search | -l) mlocate_search ;;
       --tmux-search | -t) tmuxsearch ;;
       --rofi-search | -r) rofisearch ;;
       --watch | -w) watch ;;

@@ -53,7 +53,7 @@ tmuxsearch() {
    else
       "$TERMINAL" -e tmux attach &
    fi
-   tmux send "$0 --fzf-search" "Enter"
+   tmux send "$0 --bolt-search" "Enter"
 }
 
 searchnlaunch() {

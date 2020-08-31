@@ -6,7 +6,7 @@ SEARCHLIST=/tmp/searchlist
 mlocate_search() {
    QUERY=$(locate / |
       fzf --prompt "launch: ") &&
-      searchnlaunch "$QUERY"
+      launch -f "$QUERY"
 }
 
 watch() {
@@ -80,11 +80,6 @@ generate() {
       xargs -I% find % -maxdepth $MAXDEPTH \
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
-
-export FZF_DEFAULT_OPTS="-e -i --reverse --border --no-info --cycle --margin 15%,30% --bind=tab:down,btab:up,\;:accept,\':jump-accept"
-# -m
-# -e
-# --preview 'realpath {}' \
 
 while :; do
    case $1 in

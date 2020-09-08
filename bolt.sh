@@ -4,12 +4,34 @@
 #                             Config
 #===============================================================================
 
+# List of paths to generate shortcut list
+# ❗ Give absolute paths
 PATHS="\
 /mnt/horcrux/git/own;
 /mnt/horcrux/git/suckless;
 /home/salman/Downloads;
 /mnt/horcrux/notes;
 /mnt/horcrux/torrents;
+"
+
+# List of files & directories to ignore for the search prompt
+FILTERS="\
+node_modules;
+package.json;
+.git;
+.gitignore;
+LICENSE;
+README.md;
+.ssh;
+.mame;
+.gnupg;
+icons;
+themes;
+fonts;
+Downloads/;
+torrents/;
+eyelust;
+private/.config/nvim;
 "
 
 MAXDEPTH=5
@@ -21,9 +43,14 @@ MAXDEPTH=5
 SEARCHLIST=/tmp/searchlist
 
 get_config() {
+   if [ "$1" = -p ]; then
+      LIST=$PATHS
+   else
+      LIST=$FILTERS
+   fi
    CURRENT_IFS=$IFS
    IFS=$(printf ';')
-   for line in $PATHS; do
+   for line in $LIST; do
       printf "%s" "$line"
    done
    IFS=$CURRENT_IFS
@@ -101,8 +128,8 @@ bolt_search() {
 }
 
 generate() {
-   FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-   getconfig ~/.config/bolt/paths |
+   FILTERS=$(get_config -f | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
+   get_config -p |
       xargs -I% find % -maxdepth $MAXDEPTH \
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }

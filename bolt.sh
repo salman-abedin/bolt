@@ -1,7 +1,33 @@
 #!/bin/sh
 
+#===============================================================================
+#                             Config
+#===============================================================================
+
+PATHS="\
+/mnt/horcrux/git/own;
+/mnt/horcrux/git/suckless;
+/home/salman/Downloads;
+/mnt/horcrux/notes;
+/mnt/horcrux/torrents;
+"
+
 MAXDEPTH=5
+
+#===============================================================================
+#                             Script
+#===============================================================================
+
 SEARCHLIST=/tmp/searchlist
+
+get_config() {
+   CURRENT_IFS=$IFS
+   IFS=$(printf ';')
+   for line in $PATHS; do
+      printf "%s" "$line"
+   done
+   IFS=$CURRENT_IFS
+}
 
 mlocate_search() {
    QUERY=$(locate / |

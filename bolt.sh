@@ -9,9 +9,9 @@
 PATHS="\
 /mnt/horcrux/git/own;
 /mnt/horcrux/git/suckless;
-/home/salman/Downloads;
 /mnt/horcrux/notes;
 /mnt/horcrux/torrents;
+/mnt/horcrux/downloads;
 "
 
 # List of files & directories to ignore for the search prompt

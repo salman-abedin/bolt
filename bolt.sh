@@ -22,6 +22,7 @@ node_modules;
 package.json;
 .git;
 .gitignore;
+Makefile;
 LICENSE;
 README.md;
 .ssh;
@@ -30,7 +31,7 @@ README.md;
 icons;
 themes;
 fonts;
-Downloads/;
+downloads/;
 torrents/;
 eyelust;
 private/.config/nvim;
@@ -107,7 +108,6 @@ while :; do
       --bolt-search | -f) bolt_search ;;
       --mlocate-search | -m) mlocate_search ;;
       --tmux-search | -t) tmux_search ;;
-      --watch | -w) watch ;;
       *) break ;;
    esac
    shift

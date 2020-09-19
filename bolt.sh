@@ -4,7 +4,7 @@
 #                             Config
 #===============================================================================
 
-MAX_DEPTH=5
+MAX_DEPTH=7
 
 # List of paths to generate shortcut list
 # ❗ Give absolute paths
@@ -34,7 +34,8 @@ fonts;
 downloads/;
 torrents/;
 eyelust;
-private/.config/nvim;
+magpie-archived;
+magpie-private/.config/nvim;
 "
 
 #===============================================================================

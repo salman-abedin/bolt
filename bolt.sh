@@ -14,6 +14,7 @@ PATHS="\
 /mnt/horcrux/notes;
 /mnt/horcrux/torrents;
 /mnt/horcrux/downloads;
+/mnt/horcrux/toys;
 "
 
 # List of files & directories to ignore for the search prompt
@@ -33,6 +34,7 @@ themes;
 fonts;
 downloads/;
 torrents/;
+toys/;
 eyelust;
 magpie-archived;
 magpie-private/.config/nvim;

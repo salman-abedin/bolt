@@ -60,6 +60,12 @@ rofisearch() {
       searchnlaunch "$QUERY"
 }
 
+dmenusearch() {
+   QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
+      dmenu -p Open) &&
+      searchnlaunch "$QUERY"
+}
+
 tmuxsearch() {
    if pidof tmux; then
       tmux new-window
@@ -109,6 +115,7 @@ while :; do
       --fzf-search) fzfsearch ;;
       --launch) launch "$2" ;;
       --rofi-search) rofisearch ;;
+      --dmenu-search) dmenusearch ;;
       --watch) watch ;;
       *) break ;;
    esac

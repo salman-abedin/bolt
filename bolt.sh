@@ -62,7 +62,7 @@ rofisearch() {
 
 dmenusearch() {
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-      dmenu -p Open) &&
+      dmenu -i -l 7  -p Open) &&
       searchnlaunch "$QUERY"
 }
 

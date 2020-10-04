@@ -24,6 +24,8 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  [rofi](https://github.com/davatorium/rofi)
 
+-  (Optional) [dmenu](https://tools.suckless.org/dmenu/)
+
 -  (Optional) [inotify-tools](https://github.com/inotify-tools/inotify-tools)
 
 -  (Optional) [tmux](https://github.com/tmux/tmux),
@@ -53,6 +55,8 @@ Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L1
 
    -  (Optional) run `bolt --tmux-launch` or `bolt --fzf-search` to use bolt inside the terminal
 
+   -  (Optional) run `bolt --dmenu-search` to use bolt with dmenu
+
 -  Type the keyword, press enter and baam!
 
 ## Uninstallation
@@ -70,6 +74,8 @@ sudo make uninstall
 -  **30/06/20**:- Added googling support
 
 -  **05/07/20**:- Added tmux and fzf support
+
+-  **04/10/20**:- Added dmenu support
 
 ## FAQ
 

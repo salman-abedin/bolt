@@ -55,6 +55,13 @@ Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L1
 
 -  Type the keyword, press enter and baam!
 
+## Update
+
+```sh
+cd bolt
+git pull rebase && sudo make install
+```
+
 ## Uninstallation
 
 ```sh

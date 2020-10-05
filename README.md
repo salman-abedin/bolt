@@ -22,7 +22,7 @@ Bolt prompts you for keywords to your local files, directories or Google search 
 
 -  grep, sed, find, awk, file, xargs
 
--  [rofi](https://github.com/davatorium/rofi)
+-  [rofi](https://github.com/davatorium/rofi) / [dmenu](https://tools.suckless.org/dmenu/)
 
 -  (Optional) [inotify-tools](https://github.com/inotify-tools/inotify-tools)
 

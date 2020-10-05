@@ -45,9 +45,9 @@ Modify the [launch](https://github.com/salman-abedin/bolt/blob/master/bolt.sh#L1
 -  Create a **paths** and a **filters** file in **~/.config/bolt**.
    Here is a couple of [examples](https://github.com/salman-abedin/bolt/tree/master/example_config)
 
--  run `bolt --generate` at startup to generate the search list
+-  run `bolt --generate` (preferably at startup) to generate the search list
 
-   -  (Optional) run `bolt --watch` at startup to update the search list on realtime
+   -  (Optional) run `bolt --watch` (preferably at startup) to enable real-time search list update
 
 -  Bind a key combination with the command `bolt --rofi-search` to launch the prompt
 

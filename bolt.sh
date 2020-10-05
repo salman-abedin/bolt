@@ -37,7 +37,7 @@ launch() {
    esac
 }
 
-searchnlaunch() {
+search_n_launch() {
    RESULT=$(grep "$1" "$SEARCHLIST" | head -1)
    if [ -n "$RESULT" ]; then
       launch "$RESULT"
@@ -46,7 +46,7 @@ searchnlaunch() {
    fi
 }
 
-getconfig() {
+get_config() {
    while IFS= read -r line; do
       case $line in
          [[:alnum:]]* | /*) echo "$line" ;;
@@ -54,13 +54,12 @@ getconfig() {
    done < "$1"
 }
 
-rofisearch() {
-   QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
-      rofi -sort true -sorting-method fzf -dmenu -i -p Open) &&
-      searchnlaunch "$QUERY"
+dmenu_search() {
+   QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" | "$1") &&
+      search_n_launch "$QUERY"
 }
 
-tmuxsearch() {
+tmux_search() {
    if pidof tmux; then
       tmux new-window
    else
@@ -75,7 +74,7 @@ tmuxsearch() {
    tmux send "$0 --fzf-search" "Enter"
 }
 
-fzfsearch() {
+fzf_search() {
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" |
       fzf -e -i \
          --reverse \
@@ -84,7 +83,7 @@ fzfsearch() {
          --info hidden \
          --bind=tab:down,btab:up \
          --prompt "launch ") &&
-      searchnlaunch "$QUERY"
+      search_n_launch "$QUERY"
 }
 
 watch() {
@@ -96,8 +95,8 @@ watch() {
 }
 
 generate() {
-   FILTERS=$(getconfig ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-   getconfig ~/.config/bolt/paths |
+   FILTERS=$(get_config ~/.config/bolt/filters | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
+   get_config ~/.config/bolt/paths |
       xargs -I% find % -maxdepth $MAXDEPTH \
          ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
 }
@@ -105,10 +104,13 @@ generate() {
 while :; do
    case $1 in
       --generate) generate ;;
-      --tmux-search) tmuxsearch ;;
-      --fzf-search) fzfsearch ;;
+      --tmux-search) tmux_search ;;
+      --fzf-search) fzf_search ;;
       --launch) launch "$2" ;;
-      --rofi-search) rofisearch ;;
+      --rofi-search)
+         dmenu_search "rofi -sort true -sorting-method fzf -dmenu -i -p Open)"
+         ;;
+      --dmenu-search) dmenu_search "dmenu -i" ;;
       --watch) watch ;;
       *) break ;;
    esac

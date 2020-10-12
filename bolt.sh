@@ -10,7 +10,7 @@ MAX_DEPTH=7
 # ❗ Give absolute paths
 PATHS="\
 /mnt/horcrux/git/own;
-/mnt/horcrux/git/innovations;
+/mnt/horcrux/innovations;
 /mnt/horcrux/git/suckless;
 /mnt/horcrux/notes;
 /mnt/horcrux/torrents;

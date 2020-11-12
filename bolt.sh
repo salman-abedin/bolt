@@ -10,12 +10,12 @@ MAX_DEPTH=7
 # ❗ Give absolute paths
 PATHS="\
 /mnt/horcrux/git/own;
-/mnt/horcrux/innovations;
 /mnt/horcrux/git/suckless;
 /mnt/horcrux/notes;
 /mnt/horcrux/torrents;
 /mnt/horcrux/downloads;
 /mnt/horcrux/toys;
+/mnt/horcrux/trash;
 "
 
 # List of files & directories to ignore for the search prompt
@@ -36,6 +36,7 @@ themes;
 fonts;
 downloads/;
 torrents/;
+trash/;
 toys/;
 eyelust;
 magpie-archived;

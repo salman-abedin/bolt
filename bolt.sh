@@ -23,6 +23,7 @@ FILTERS="\
 node_modules;
 package.json;
 package-lock.json;
+yarn.lock;
 .git;
 .gitignore;
 Makefile;

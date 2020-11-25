@@ -17,27 +17,17 @@ PATHS="\
 "
 
 # FILTERS="\
-# node_modules;
 # package.json;
 # package-lock.json;
 # yarn.lock;
-# .git;
 # .gitignore;
 # Makefile;
 # LICENSE;
 # README.md;
-# .ssh;
-# .mame;
-# .gnupg;
-# icons;
-# themes;
-# fonts;
 # downloads/;
 # torrents/;
 # trash/;
 # toys/;
-# eyelust;
-# magpie-archived;
 # magpie-private/.config/nvim;
 # "
 

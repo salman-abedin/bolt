@@ -4,10 +4,8 @@
 #                             Config
 #===============================================================================
 
-MAX_DEPTH=7
+MAX_DEPTH=5
 
-# List of paths to generate shortcut list
-# ❗ Give absolute paths
 PATHS="\
 /mnt/horcrux/git/own;
 /mnt/horcrux/git/suckless;
@@ -18,29 +16,46 @@ PATHS="\
 /mnt/horcrux/trash;
 "
 
-# List of files & directories to ignore for the search prompt
+# FILTERS="\
+# node_modules;
+# package.json;
+# package-lock.json;
+# yarn.lock;
+# .git;
+# .gitignore;
+# Makefile;
+# LICENSE;
+# README.md;
+# .ssh;
+# .mame;
+# .gnupg;
+# icons;
+# themes;
+# fonts;
+# downloads/;
+# torrents/;
+# trash/;
+# toys/;
+# eyelust;
+# magpie-archived;
+# magpie-private/.config/nvim;
+# "
+
 FILTERS="\
 node_modules;
-package.json;
-package-lock.json;
-yarn.lock;
+android;
+ios;
+build;
+.idea;
 .git;
-.gitignore;
-Makefile;
-LICENSE;
-README.md;
 .ssh;
 .mame;
+.cache;
 .gnupg;
 icons;
 themes;
 fonts;
-downloads/;
-torrents/;
-trash/;
-toys/;
 eyelust;
-magpie-archived;
 magpie-private/.config/nvim;
 "
 
@@ -96,16 +111,18 @@ _get_match() {
 }
 
 bolt_search() {
-   # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" |
-   QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" | fzf) &&
-      RESULT=$(_get_match "$QUERY") &&
-      launch -f "$RESULT"
+   # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" | fzf)
+
+   QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" | fzf) || exit 0
+   RESULT=$(_get_match "$QUERY")
+   /usr/local/bin/faint "$RESULT"
+   bolt_search
 }
 
 generate() {
    FILTERS=$(_get_config -f | awk '{printf "%s\\|",$0;}' | sed -e 's/|\./|\\./g' -e 's/\\|$//g')
-   find $(_get_config -p) -maxdepth $MAX_DEPTH \
-      ! -regex ".*\($FILTERS\).*" > "$SEARCHLIST"
+   find $(_get_config -p) -maxdepth $MAX_DEPTH -type d \
+      ! -regex ".*\($FILTERS\).*" | sort > "$SEARCHLIST"
 }
 
 while :; do

@@ -107,7 +107,7 @@ bolt_search() {
    QUERY=$(awk -F / '{print $(NF-1)"/"$NF}' "$SEARCHLIST" | fzf) || exit 0
    RESULT=$(_get_match "$QUERY")
    /usr/local/bin/faint "$RESULT"
-   bolt_search
+   # bolt_search
 }
 
 generate() {

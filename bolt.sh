@@ -9,7 +9,6 @@ MAX_DEPTH=5
 PATHS="\
 /mnt/horcrux/git/own;
 /mnt/horcrux/git/suckless;
-/mnt/horcrux/notes;
 /mnt/horcrux/torrents;
 /mnt/horcrux/downloads;
 /mnt/horcrux/toys;

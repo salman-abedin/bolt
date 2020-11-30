@@ -46,6 +46,7 @@ themes;
 fonts;
 eyelust;
 magpie-private/.config/nvim;
+magpie/.local;
 docs;
 src;
 misc;
@@ -98,7 +99,7 @@ _get_config() {
 _get_match() {
    while IFS= read -r line; do
       case $line in
-         *$1) echo "$line" ;;
+         *"/$1") echo "$line" ;;
       esac
    done < "$SEARCHLIST"
 }

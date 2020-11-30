@@ -1,0 +1,53 @@
+#!/bin/sh
+
+MAX_DEPTH=5
+
+PATHS="\
+/mnt/internal/git/own;
+/mnt/internal/git/suckless;
+/mnt/internal/git/work;
+/mnt/internal/torrents;
+/mnt/internal/downloads;
+/mnt/internal/toys;
+/mnt/internal/tutorials;
+"
+
+# FILTERS="\
+# package.json;
+# package-lock.json;
+# yarn.lock;
+# .gitignore;
+# Makefile;
+# LICENSE;
+# README.md;
+# downloads/;
+# torrents/;
+# trash/;
+# toys/;
+# magpie-private/.config/nvim;
+# "
+
+FILTERS="\
+node_modules;
+android;
+ios;
+build;
+.idea;
+.git;
+.ssh;
+.mame;
+.cache;
+.gnupg;
+icons;
+themes;
+fonts;
+eyelust;
+magpie-private/.config;
+magpie/.local;
+docs;
+src;
+misc;
+Misc;
+vendor;
+/config;
+"

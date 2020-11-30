@@ -47,6 +47,9 @@ fonts;
 eyelust;
 magpie-private/.config/nvim;
 docs;
+src;
+misc;
+Misc;
 "
 
 #===============================================================================
@@ -102,8 +105,8 @@ _get_match() {
 
 bolt_search() {
    # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" | fzf)
-
-   QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" | fzf) || exit 0
+   # QUERY=$(awk -F / '{print $(NF-2)"/"$(NF-1)"/"$NF}' "$SEARCHLIST" | fzf) || exit 0
+   QUERY=$(awk -F / '{print $NF}' "$SEARCHLIST" | fzf) || exit 0
    RESULT=$(_get_match "$QUERY")
    /usr/local/bin/faint "$RESULT"
    # bolt_search

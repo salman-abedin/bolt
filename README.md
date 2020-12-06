@@ -1,4 +1,4 @@
-![](preview/bolt.gif)
+![](https://gitlab.com/salman-abedin/assets/-/raw/master/bolt.gif)
 
 # Bolt: A launcher wrapper for having a lightning fast Unix workflow
 

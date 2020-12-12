@@ -1,18 +1,20 @@
 .POSIX:
 DIR_BIN = /usr/local/bin
-CONFIG = ~/.config/boltrc
+SCRIPTS = $(shell grep -lr "^#\!" ./* | sed 's/.\///')
+CONFIG = $(shell find $$PWD -type f -name "*rc")
 init:
-	@[ -f $(CONFIG) ] || cp src/bolt-config $(CONFIG)
-	@echo Done initiating configs.
+	@[ $(CONFIG) ] && { \
+		[ -f ~/.config/$(CONFIG) ] || cp $(CONFIG) ~/.config; \
+	} || exit 0
+	@echo Initiation finished.
 install:
 	@mkdir -p $(DIR_BIN)
-	@for script in src/*; do \
+	@for script in $(SCRIPTS); do \
 		cp -f $$script $(DIR_BIN); \
-		chmod 755 $(DIR_BIN)/$${script#src/}; \
+		chmod 755 $(DIR_BIN)/$${script##*/}; \
 		done
-	@echo Done installing the executable files.
+	@echo Installation finished.
 uninstall:
-	@for script in src/*;do rm -f $(DIR_BIN)/$${script#src/}; done
-	@rm -fr $(CONFIG)
-	@echo Done removing executable files.
+	@for script in $(SCRIPTS); do rm -f $(DIR_BIN)/$${script##*/}; done
+	@echo Uninstallation finished.
 .PHONY: init install uninstall

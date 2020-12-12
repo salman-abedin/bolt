@@ -1,0 +1,45 @@
+#!/bin/sh
+
+LIST_PATH=/tmp/BOLT_LIST_PATH
+
+. ~/.config/boltrc
+
+_get_config() {
+   CURRENT_IFS=$IFS
+   IFS=$(printf ';')
+   for line in $1; do
+      printf "%s" "$line"
+   done
+   IFS=$CURRENT_IFS
+}
+
+_get_match() {
+   while IFS= read -r line; do
+      case $line in
+         *"/$1") echo "$line" ;;
+      esac
+   done < "$LIST_PATH"
+}
+
+search() {
+   QUERY=$(awk -F / '{print $NF}' $LIST_PATH | $DMENU) || exit 0
+   RESULT=$(_get_match "$QUERY")
+   $EXPLORER "$RESULT"
+}
+
+generate() {
+   FILTERS=$(
+      _get_config "$FILTERS" |
+         awk '{printf "%s\\|",$0;}' |
+         sed -e 's/|\./|\\./g' -e 's/\\|$//g'
+   )
+   find $(_get_config "$PATHS") -maxdepth "$MAX_DEPTH" \
+      -regex ".*\($FILTERS\).*" -prune -o \
+      -type d -print |
+      sort > $LIST_PATH
+}
+
+case $1 in
+   --generate | -g) generate ;;
+   --search | -s) search ;;
+esac
